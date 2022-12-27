@@ -1,0 +1,6 @@
+.profile__add-buttom {
+    background-image: url(../../../images/vector-plus.svg);
+    background-repeat: no-repeat;
+    min-width: 22px;
+    min-height: 22px;
+}
