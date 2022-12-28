@@ -1,6 +1,5 @@
 .profile__image {
     max-width: 120px;
     max-height: 120px;
-    display: flex;
     border-radius: 50%;
 }

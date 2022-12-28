@@ -24,7 +24,16 @@
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add-buttom/profile__add-buttom.css);
+@import url(../blocks/profile/__vector/proflile__vector.css);
 /* Конец блока profile */
+
+/* Блок places */
+@import url(../blocks/places/places.css);
+@import url(../blocks/places/__article/places__article.css);
+@import url(../blocks/places/__image/places__image.css);
+@import url(../blocks/places/__title/places__title.css);
+@import url(../blocks/places/__icon/places__icon.css);
+/* Конец блока places */
 
 /* Секция footer */
 @import url(../blocks/footer/footer.css);
