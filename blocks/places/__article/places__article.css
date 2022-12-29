@@ -1,1 +1,4 @@
-.places__article {}
+.places__article {
+    overflow: hidden;
+    border-radius: 12px;
+}

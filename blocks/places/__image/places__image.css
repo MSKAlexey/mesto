@@ -1,1 +1,5 @@
-.places__image {}
+.places__image {
+    max-width: 100%;
+    display: block;
+    min-height: 282px;
+}

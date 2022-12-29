@@ -1,1 +1,11 @@
-.places {}
+.places {
+    max-width: 282px;
+    margin: 20px auto 0;
+    display: grid;
+    gap: 20px;
+}
+
+@media screen and (min-width: 880px) 
+    .places {
+        gap: 16px;
+}
