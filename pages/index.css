@@ -26,7 +26,7 @@
 @import url(../blocks/profile/__add-buttom/profile__add-buttom.css);
 @import url(../blocks/profile/__vector/proflile__vector.css);
 @import url(../blocks/profile/__popup-open/profile__popup-open.css);
-@import url(../blocks/profile/__mane-buttom/profile__mane-buttom.css);
+@import url(../blocks/profile/__name-buttom/profile__name-buttom.css);
 /* Конец блока profile */
 
 /* Блок places */
@@ -48,8 +48,9 @@
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__is-opened/popup__is-opened.css);
-/* 
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__button-save/popup__button-save.css);
+/*
 @import url(../blocks/popup/__subtitle/popup__subtitle.css); */
 /* Конец блока popup */
 
