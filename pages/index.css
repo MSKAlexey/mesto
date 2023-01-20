@@ -27,6 +27,7 @@
 @import url(../blocks/profile/__vector/proflile__vector.css);
 @import url(../blocks/profile/__popup-open/profile__popup-open.css);
 @import url(../blocks/profile/__name-buttom/profile__name-buttom.css);
+@import url(../blocks/profile/__content/profile__content.css);
 /* Конец блока profile */
 
 /* Блок places */
