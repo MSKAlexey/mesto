@@ -8,6 +8,10 @@
 @import url(../blocks/page/page.css);
 /* Конец блока page */
 
+/* opacity */
+@import url(../blocks/opacity/opacity.css);
+/* Конец opacity*/
+
 /* Блок page__container */
 @import url(../blocks/page/__container/page__container.css);
 /* Конец блока page__container */
