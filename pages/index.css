@@ -54,8 +54,3 @@
 /*
 @import url(../blocks/popup/__subtitle/popup__subtitle.css); */
 /* Конец блока popup */
-
-/* Секция form */
-@import url(../blocks/form/form.css);
-@import url(../blocks/form/__title/form__title.css);
-/* Конец блока form */
