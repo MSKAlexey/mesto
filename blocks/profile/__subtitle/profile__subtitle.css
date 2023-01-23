@@ -7,4 +7,13 @@
     font-size: 14px;
     line-height: 17px;
     color: #FFFFFF;
+    text-align: center;
+}
+
+@media screen and (min-width: 880px) {
+    .profile__subtitle {
+        font-size: 18px;
+        line-height: 22px;
+        text-align: start;
+    }
 }
