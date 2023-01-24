@@ -12,6 +12,10 @@
 @import url(../blocks/opacity/opacity.css);
 /* Конец opacity*/
 
+/* cursor */
+@import url(../blocks/cursor/cursor.css);
+/* Конец cursor*/
+
 /* Блок page__container */
 @import url(../blocks/page/__container/page__container.css);
 /* Конец блока page__container */
