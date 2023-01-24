@@ -1,4 +1,4 @@
-.proflile__vector {
+.profile__vector {
     background: url(../../../images/vector-plus.svg) no-repeat center transparent;
     margin: 32px 0 0 0;
     border: solid 2px white;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 880px) {
-    .proflile__vector {
+    .profile__vector {
         margin: 2px 0 0 242px;
         width: 150px;
         background-size: 22px 22px;
