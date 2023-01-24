@@ -10,4 +10,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     align-self: center;
+    max-width: 215px;
 }

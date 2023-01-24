@@ -1,5 +1,8 @@
 .profile__content {
     padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 338px;
 }
 
 @media screen and (min-width: 880px) {
