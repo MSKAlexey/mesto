@@ -7,16 +7,17 @@ let saveBtn = popupElement.querySelector('.popup__button-save');
 let profileName = document.querySelector('.profile__title');
 let profileProfession = document.querySelector('.profile__subtitle');
 
+
+
 const openPopup = function() {
-    popupElement.classList.add('popup__is-opened');
+    popupElement.classList.add('popup__opened');
 }
 
 const closePopup = function() {
-    popupElement.classList.remove('popup__is-opened');
+    popupElement.classList.remove('popup__opened');
 }
 
 const closePopupByClickOnOverlay = function(event) {
-    console.log(event.target, event.currentTarget);
     if (event.target !== event.currentTarget) {
         return;
     }
@@ -26,7 +27,9 @@ const closePopupByClickOnOverlay = function(event) {
 
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
+
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
+
 saveBtn.addEventListener('click', () =>{
     profileName.textContent = popupName.value;
     profileProfession.textContent = popupProfession.value;
