@@ -1,14 +1,17 @@
 .places {
-    max-width: 282px;
     margin: 35px auto 0;
-    display: grid;
-    gap: 19px;
+    width: 282px;
+}
+
+@media screen and (min-width: 583px) {
+    .places {
+        width: 583px;
+    }
 }
 
 @media screen and (min-width: 880px) {
     .places {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 100%;
         margin: 50px auto 0;
+        width: 100%;
     }
 }

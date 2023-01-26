@@ -1,18 +1,18 @@
-.places__icon {
+.cards__icon {
     background: url(../../../images/heart-disabled.svg) no-repeat center;
     width: 22px;
     height: 19px;
     margin: auto 0;
 }
 
-.places__icon:hover {
+.cards__icon:hover {
     background: url(../../../images/heart-hover.svg) no-repeat center;
     width: 22px;
     height: 19px;
     margin: auto 0;
 }
 
-.places__icon:active {
+.cards__icon:active {
     background: url(../../../images/heart-active.svg) no-repeat center;
     width: 22px;
     height: 19px;
