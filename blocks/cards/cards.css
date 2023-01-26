@@ -2,17 +2,6 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 19px;
-}
-
-@media screen and (min-width: 583px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (min-width: 880px) {
-    .cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    gap: 17px;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
 }
