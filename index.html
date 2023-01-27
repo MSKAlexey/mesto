@@ -43,12 +43,13 @@
 
             <section class="places">
 
-                <ul class='cards'>
+                <ul class="cards">
+
                     <li class="cards__item">
                         <img src="./images/karachaevsk.jpg" alt="Фотография Карачаевска" class="cards__image">
                         <div class="cards__title-icon">
                             <h2 class="cards__title">Карачаевск</h2>
-                            <div class="cards__icon"></div>
+                            <button type="button" class="cards__icon"></button>
                         </div>
                     </li>
 
@@ -56,7 +57,7 @@
                         <img src="./images/mountain-elbrus.jpg" alt="Фотография горы Эльбрус" class="cards__image">
                         <div class="cards__title-icon">
                             <h2 class="cards__title">Гора Эльбрус</h2>
-                            <div class="cards__icon"></div>
+                            <button type="button" class="cards__icon"></button>
                         </div>
                     </li>
 
@@ -64,7 +65,7 @@
                         <img src="./images/dombai.jpg" alt="Фотография горы Домбай" class="cards__image">
                         <div class="cards__title-icon">
                             <h2 class="cards__title">Домбай</h2>
-                            <div class="cards__icon"></div>
+                            <button type="button" class="cards__icon"></button>
                         </div>
                     </li>
 
@@ -72,7 +73,7 @@
                         <img src="./images/mountain-elbrus.jpg" alt="Фотография горы Эльбрус" class="cards__image">
                         <div class="cards__title-icon">
                             <h2 class="cards__title">Гора Эльбрус</h2>
-                            <div class="cards__icon"></div>
+                            <button type="button" class="cards__icon"></button>
                         </div>
                     </li>
 
@@ -80,7 +81,7 @@
                         <img src="./images/Velichestvennyj.jpg" alt="Фотография Москвы, кремль" class="cards__image">
                         <div class="cards__title-icon">
                             <h2 class="cards__title">Москва</h2>
-                            <div class="cards__icon"></div>
+                            <button type="button" class="cards__icon"></button>
                         </div>
                     </li>
 
@@ -88,9 +89,10 @@
                         <img src="./images/karachaevsk.jpg" alt="Фотография Карачаевска" class="cards__image">
                         <div class="cards__title-icon">
                             <h2 class="cards__title">Карачаевск-Черкесск</h2>
-                            <div class="cards__icon"></div>
+                            <button type="button" class="cards__icon"></button>
                         </div>
                     </li>
+
                 </ul>
 
             </section>
@@ -108,14 +110,18 @@
     <!-- Попап -->
     <section class="popup">
         <div class="popup__container">
-            <button class="popup__close cursor"></button>
+            <button type="button" class="popup__close cursor"></button>
 
-            <h2 class="popup__title">Редактировать профиль</h2>
+            <form action="#" method="get">
 
-            <input type="text" value="Жак-Ив Кусто" id="popup__name" class="popup__name">
-            <input type="text" value="Исследователь океана" id="popup__profession" class="popup__profession">
+                <h2 class="popup__title">Редактировать профиль</h2>
 
-            <button type="submit" class="popup__button-save cursor">Сохранить</button>
+                <input type="text" value="Жак-Ив Кусто" id="popup__name" class="popup__name">
+                <input type="text" value="Исследователь океана" id="popup__profession" class="popup__profession">
+
+                <button type="submit" class="popup__button-save cursor">Сохранить</button>
+
+            </form>
 
         </div>
     </section>
