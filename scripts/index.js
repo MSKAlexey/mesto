@@ -5,7 +5,7 @@ let popupName = popupElement.querySelector('.popup__name');
 let popupAboutMe = popupElement.querySelector('.form__item_el_about-me');
 let saveBtn = popupElement.querySelector('.popup__button-save');
 let profileName = document.querySelector('.profile__title');
-let profileAboutMe = document.querySelector('.form__item_el_about-me');
+let profileAboutMe = document.querySelector('.profile__subtitle');
 
 
 
