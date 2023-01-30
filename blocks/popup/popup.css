@@ -8,4 +8,5 @@
     align-content: space-around;
     flex-wrap: wrap;
     display: none;
+    justify-content: center;
 }

@@ -13,7 +13,7 @@
 
 @media screen and (min-width: 880px) {
     .profile__popup-open {
-        margin: 18px 0 8px 25px;
+        margin: 18px 0 8px;
         min-width: 24px;
         min-height: 24px;
         background-size: 10px 10px;
