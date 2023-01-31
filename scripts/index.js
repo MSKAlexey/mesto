@@ -32,7 +32,7 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
-saveBtn.addEventListener('click', () =>{
+document.addEventListener('submit', () =>{
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAboutMe.value;
     closePopup();  
