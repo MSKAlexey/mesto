@@ -8,5 +8,6 @@
 @media screen and (min-width: 880px) {
     .profile__content {
         padding: 0 0 0 30px;
+        width: 338px;
     }
 }

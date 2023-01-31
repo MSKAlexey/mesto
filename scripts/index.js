@@ -1,8 +1,8 @@
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__popup-open');
-let popupName = popupElement.querySelector('.popup__name');
-let popupAboutMe = popupElement.querySelector('.form__item_el_about-me');
+let popupName = popupElement.querySelector('.form__name');
+let popupAbout = popupElement.querySelector('.form__about');
 let saveBtn = popupElement.querySelector('.popup__button-save');
 let profileName = document.querySelector('.profile__title');
 let profileAboutMe = document.querySelector('.profile__subtitle');
@@ -12,7 +12,7 @@ let profileAboutMe = document.querySelector('.profile__subtitle');
 const openPopup = function() {
     popupElement.classList.add('popup__opened');
     popupName.value = profileName.textContent;
-    popupAboutMe.value = profileAboutMe.textContent;
+    popupAbout.value = profileAboutMe.textContent;
 }
 
 const closePopup = function() {
@@ -34,6 +34,6 @@ popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
 document.addEventListener('submit', () =>{
     profileName.textContent = popupName.value;
-    profileAboutMe.textContent = popupAboutMe.value;
+    profileAboutMe.textContent = popupAbout.value;
     closePopup();  
 });
