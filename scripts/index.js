@@ -10,13 +10,13 @@ let profileAboutMe = document.querySelector('.profile__subtitle');
 
 
 const openPopup = function() {
-    popupElement.classList.add('popup__opened');
+    popupElement.classList.add('popup_opened');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
 }
 
 const closePopup = function() {
-    popupElement.classList.remove('popup__opened');
+    popupElement.classList.remove('popup_opened');
 }
 
 const closePopupByClickOnOverlay = function(event) {
