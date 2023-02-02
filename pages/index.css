@@ -58,7 +58,5 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
-@import url(../blocks/popup/__name/popup__name.css);
-@import url(../blocks/popup/__profession/popup__profession.css);
 @import url(../blocks/popup/__form/popup__form.css);
 /* Конец блока popup */
