@@ -33,8 +33,8 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
 form.addEventListener('submit', (event) =>{
+    event.preventDefault() 
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
-    closePopup();
-    event.preventDefault()  
+    closePopup(); 
 });
