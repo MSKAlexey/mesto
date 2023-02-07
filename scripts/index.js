@@ -65,3 +65,17 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
+
+    const table = document.querySelector('.table');
+    
+    const createCards = (cardsName) => {
+        const template = `
+        <li class="table-template__item">
+        <img src="./images/mountain-elbrus.jpg" alt="Фотография горы Эльбрус" class="cards__image">
+        <div class="cards__title-icon">
+            <h2 class="cards__title">Гора Эльбрус</h2>
+            <button type="button" class="cards__icon"></button>
+        </div>    
+    </li>
+        `;
+    }
