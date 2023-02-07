@@ -9,17 +9,17 @@ let profileAboutMe = document.querySelector('.profile__subtitle');
 
 
 
-const openPopup = function() {
+const openPopup = function () {
     popupElement.classList.add('popup_opened');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
 }
 
-const closePopup = function() {
+const closePopup = function () {
     popupElement.classList.remove('popup_opened');
 }
 
-const closePopupByClickOnOverlay = function(event) {
+const closePopupByClickOnOverlay = function (event) {
     if (event.target !== event.currentTarget) {
         return;
     }
@@ -32,50 +32,65 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
-form.addEventListener('submit', (event) =>{
-    event.preventDefault() 
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
-    closePopup(); 
+    closePopup();
 });
 
 const initialCards = [
     {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     },
     {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
     },
     {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
     },
     {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
+];
 
-    const table = document.querySelector('.table');
-    
-    const createCards = (cardsName) => {
-        const template = `
-        <li class="table-template__item">
+const table = document.querySelector('.table');
+console.log(table);
+
+const createCards = (initialCardsName) => {
+    const template = `
+        <li class="cards__item">
         <img src="./images/mountain-elbrus.jpg" alt="Фотография горы Эльбрус" class="cards__image">
         <div class="cards__title-icon">
-            <h2 class="cards__title">Гора Эльбрус</h2>
+            <h2 class="cards__title"></h2>
             <button type="button" class="cards__icon"></button>
         </div>    
     </li>
         `;
-    }
+
+    const container = document.createElement('div');
+    container.innerHTML = template;
+    container.querySelector('.cards__title').textContent = initialCardsName;
+    return container.firstElementChild;
+
+};
+
+const renderCards = (initialCardsName) => {
+    table.append(createCards(initialCardsName));
+};
+
+initialCards.forEach((item) => {
+    renderCards(item); 
+});
