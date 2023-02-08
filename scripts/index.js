@@ -66,11 +66,21 @@ const initialCards = [
     }
 ];
 
-const cards = document.querySelector('.cards');
-let cardsName = initialCards.filter(element => element.name)
-console.log(cardsName);
+const cardsList = document.querySelector('.cards');
+/*  console.log(cardsList);
+    console.log(elm.name);
+    console.log(elm.link);
+ */
 
-const createCards = (cardsName, cardsLink) => {
+initialCards.forEach((elm) => {
+    renderCards(elm);
+});
+
+const renderCards = (cardsName) => {
+    cardsList.append(createCards(cardsName));
+};
+
+const createCards = (element) => {
     const template = `
         <li class="cards__item">
         <img src="" alt="" class="cards__image">
@@ -80,19 +90,8 @@ const createCards = (cardsName, cardsLink) => {
         </div>    
     </li>
         `;
-
     const container = document.createElement('div');
     container.innerHTML = template;
     container.querySelector('.cards__title').textContent = cardsName;
-    container.querySelector('.cards__image').textContent = cardsLink;
     return container.firstElementChild;
-
 };
-
-const renderCards = (cardsName, cardsLink) => {
-    cards.append(createCards(cardsName, cardsLink));
-};
-
-initialCards.forEach((cardsName, cardsLink) => {
-    renderCards(cardsName, cardsLink); 
-});
