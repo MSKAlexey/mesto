@@ -68,7 +68,7 @@ const initialCards = [
 
 const cards = document.querySelector('.cards');
 
-const createCards = (elm) => {
+const createCards = (cardsNameLink) => {
     const template = `
         <li class="cards__item">
         <img src="" alt="" class="cards__image">
@@ -80,13 +80,14 @@ const createCards = (elm) => {
 
     const container = document.createElement('div');
     container.innerHTML = template;
-    container.querySelector('.cards__title').textContent = elm.name;
-    container.querySelector('.cards__image').src = elm.link;
+    container.querySelector('.cards__title').textContent = cardsNameLink.name;
+    container.querySelector('.cards__image').src = cardsNameLink.link;
+    container.querySelector('.cards__image').alt = cardsNameLink.name;
     return container.firstElementChild;
 };
 
-const renderCards = (elm) => {
-    cards.append(createCards(elm));
+const renderCards = (cardsNameLink) => {
+    cards.append(createCards(cardsNameLink));
 };
 
 initialCards.forEach((elm) => {
