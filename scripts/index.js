@@ -66,13 +66,14 @@ const initialCards = [
     }
 ];
 
-const table = document.querySelector('.table');
-console.log(table);
+const cards = document.querySelector('.cards');
+let cardsName = initialCards.filter(element => element.name)
+console.log(cardsName);
 
-const createCards = (initialCardsName) => {
+const createCards = (cardsName, cardsLink) => {
     const template = `
         <li class="cards__item">
-        <img src="./images/mountain-elbrus.jpg" alt="Фотография горы Эльбрус" class="cards__image">
+        <img src="" alt="" class="cards__image">
         <div class="cards__title-icon">
             <h2 class="cards__title"></h2>
             <button type="button" class="cards__icon"></button>
@@ -82,15 +83,16 @@ const createCards = (initialCardsName) => {
 
     const container = document.createElement('div');
     container.innerHTML = template;
-    container.querySelector('.cards__title').textContent = initialCardsName;
+    container.querySelector('.cards__title').textContent = cardsName;
+    container.querySelector('.cards__image').textContent = cardsLink;
     return container.firstElementChild;
 
 };
 
-const renderCards = (initialCardsName) => {
-    table.append(createCards(initialCardsName));
+const renderCards = (cardsName, cardsLink) => {
+    cards.append(createCards(cardsName, cardsLink));
 };
 
-initialCards.forEach((item) => {
-    renderCards(item); 
+initialCards.forEach((cardsName, cardsLink) => {
+    renderCards(cardsName, cardsLink); 
 });
