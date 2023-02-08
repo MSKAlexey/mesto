@@ -67,23 +67,15 @@ const initialCards = [
 ];
 
 const cards = document.querySelector('.cards');
+const template = document.querySelector('#template')
 
 const createCards = (cardsNameLink) => {
-    const template = `
-        <li class="cards__item">
-        <img src="" alt="" class="cards__image">
-        <div class="cards__title-icon">
-            <h2 class="cards__title"></h2>
-            <button type="button" class="cards__icon"></button>
-        </div>    
-        </li>`;
+    const card = template.content.querySelector('.cards__item').cloneNode(true);
 
-    const container = document.createElement('div');
-    container.innerHTML = template;
-    container.querySelector('.cards__title').textContent = cardsNameLink.name;
-    container.querySelector('.cards__image').src = cardsNameLink.link;
-    container.querySelector('.cards__image').alt = cardsNameLink.name;
-    return container.firstElementChild;
+    card.querySelector('.cards__title').textContent = cardsNameLink.name;
+    card.querySelector('.cards__image').src = cardsNameLink.link;
+    card.querySelector('.cards__image').alt = cardsNameLink.name;
+    return card;
 };
 
 const renderCards = (cardsNameLink) => {
