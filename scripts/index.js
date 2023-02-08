@@ -66,21 +66,9 @@ const initialCards = [
     }
 ];
 
-const cardsList = document.querySelector('.cards');
-/*  console.log(cardsList);
-    console.log(elm.name);
-    console.log(elm.link);
- */
+const cards = document.querySelector('.cards');
 
-initialCards.forEach((elm) => {
-    renderCards(elm);
-});
-
-const renderCards = (cardsName) => {
-    cardsList.append(createCards(cardsName));
-};
-
-const createCards = (element) => {
+const createCards = (elm) => {
     const template = `
         <li class="cards__item">
         <img src="" alt="" class="cards__image">
@@ -88,10 +76,19 @@ const createCards = (element) => {
             <h2 class="cards__title"></h2>
             <button type="button" class="cards__icon"></button>
         </div>    
-    </li>
-        `;
+        </li>`;
+
     const container = document.createElement('div');
     container.innerHTML = template;
-    container.querySelector('.cards__title').textContent = cardsName;
+    container.querySelector('.cards__title').textContent = elm.name;
+    container.querySelector('.cards__image').src = elm.link;
     return container.firstElementChild;
 };
+
+const renderCards = (elm) => {
+    cards.append(createCards(elm));
+};
+
+initialCards.forEach((elm) => {
+    renderCards(elm);
+});
