@@ -1,36 +1,79 @@
-const popupElement = document.querySelector('.popup');
-const popupCloseButtonElement = popupElement.querySelector('.popup__close');
-const popupOpenButtonElement = document.querySelector('.profile__popup-open');
-let popupName = popupElement.querySelector('.popup__form_input_name');
-let popupAbout = popupElement.querySelector('.popup__form_input_about');
-let saveBtn = popupElement.querySelector('.popup__button-save');
+// popup
+const popupEdit = document.querySelector('.popup_edit');
+const popupAdd = document.querySelector('.popup_add');
+/* const popupView = document.querySelector('.cards__image'); */
+// console.log(popupEdit, popupAdd)
+
+// popup button close
+const popupCloseButtonEdit = popupEdit.querySelector('.popup__close');
+const popupCloseButtonAdd = popupAdd.querySelector('.popup__close');
+/* const popupCloseButtonView  = popupView.querySelector('.popup__close'); */
+// console.log({popupCloseButtonEdit, popupCloseButtonAdd})
+
+// popup button open
+const popupOpenButtonEdit = document.querySelector('.profile__popup-open');
+const popupOpenButtonAdd = document.querySelector('.profile__vector');
+/* const popupOpenButtonView = document.querySelector('.cards__image'); */
+
+// popup button save
+let saveBtn = popupEdit.querySelector('.popup__button-save');
+let popupName = popupEdit.querySelector('.popup__form_input_name');
+let popupAbout = popupEdit.querySelector('.popup__form_input_about');
 let profileName = document.querySelector('.profile__title');
 let profileAboutMe = document.querySelector('.profile__subtitle');
 
 
-
-const openPopup = function () {
-    popupElement.classList.add('popup_opened');
+// открытие popup
+const openPopupEdit = function () {
+    popupEdit.classList.add('popup_opened');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
 }
 
-const closePopup = function () {
-    popupElement.classList.remove('popup_opened');
+const openPopupAdd = function () {
+    popupAdd.classList.add('popup_opened');
 }
 
-const closePopupByClickOnOverlay = function (event) {
+/* const openPopupView = function () {
+    popupView.classList.add('popup_opened');
+} */
+
+// закрытие popup
+const closePopupEdit = () => {
+    popupEdit.classList.remove('popup_opened');
+}
+
+const closePopupAdd = () => {
+    popupAdd.classList.remove('popup_opened');
+}
+
+popupOpenButtonEdit.addEventListener('click', openPopupEdit);
+popupCloseButtonEdit.addEventListener('click', closePopupEdit);
+
+popupOpenButtonAdd.addEventListener('click', openPopupAdd);
+popupCloseButtonAdd.addEventListener('click', closePopupAdd);
+
+// закрытие popup при нажатие вне формы
+const closePopupEditByClickOnOverlay = function (event) {
     if (event.target !== event.currentTarget) {
         return;
     }
 
-    closePopup();
+    closePopupEdit();
 }
 
-popupOpenButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
+const closePopupAddByClickOnOverlay = function (event) {
+    if (event.target !== event.currentTarget) {
+        return;
+    }
 
-popupElement.addEventListener('click', closePopupByClickOnOverlay);
+    closePopupAdd();
+}
+
+
+
+popupEdit.addEventListener('click', closePopupEditByClickOnOverlay);
+popupAdd.addEventListener('click', closePopupAddByClickOnOverlay);
 
 form.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -38,6 +81,7 @@ form.addEventListener('submit', (event) => {
     profileAboutMe.textContent = popupAbout.value;
     closePopup();
 });
+
 
 const initialCards = [
     {

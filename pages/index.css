@@ -44,6 +44,7 @@
 @import url(../blocks/cards/__title/cards__title.css);
 @import url(../blocks/cards/__icon/cards__icon.css);
 @import url(../blocks/cards/__title-icon/cards__title-icon.css);
+@import url(../blocks/cards/__trash/cards__trash.css);
 /* Конец блока cards */
 
 /* Секция footer */
