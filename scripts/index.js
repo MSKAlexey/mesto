@@ -16,13 +16,14 @@ const popupOpenButtonAdd = document.querySelector('.profile__vector');
 /* const popupOpenButtonView = document.querySelector('.cards__image'); */
 
 // popup button save
-let saveBtn = document.querySelector('.popup__button-save');
-let popupName = document.querySelector('.popup__form_input_name');
-let popupAbout = document.querySelector('.popup__form_input_about');
-let profileName = document.querySelector('.profile__title');
-let profileAboutMe = document.querySelector('.profile__subtitle');
-
-
+const saveBtn = document.querySelector('.popup__button-save');
+const popupName = popupEdit.querySelector('.popup__form_input_name');
+const popupAbout = popupEdit.querySelector('.popup__form_input_about');
+const profileName = document.querySelector('.profile__title');
+const profileAboutMe = document.querySelector('.profile__subtitle');
+/* const popupTitle = document.querySelector('.popup__form_input_title'); */
+const popupLink = popupAdd.querySelector('.popup__form_input_link');
+/* console.log(popupTitle, popupLink) */
 // открытие popup
 const openPopupEdit = () => {
     popupEdit.classList.add('popup_opened');
@@ -54,7 +55,7 @@ popupOpenButtonAdd.addEventListener('click', openPopupAdd);
 popupCloseButtonAdd.addEventListener('click', closePopupAdd);
 
 // закрытие popup при нажатие вне формы
-const closePopupEditByClickOnOverlay = function (event) {
+const closePopupEditByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
@@ -62,30 +63,25 @@ const closePopupEditByClickOnOverlay = function (event) {
     closePopupEdit();
 }
 
-const closePopupAddByClickOnOverlay = function (event) {
+const closePopupAddByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
 
     closePopupAdd();
 }
-
-
 
 popupEdit.addEventListener('click', closePopupEditByClickOnOverlay);
 popupAdd.addEventListener('click', closePopupAddByClickOnOverlay);
 
 edit.addEventListener('submit', (event) => {
-    event.preventDefault()
+    event.preventDefault();
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
     closePopupEdit();
 });
 
-add.addEventListener('submit', (event) => {
-    event.preventDefault()
-    closePopupAdd();
-});
+
 
 const initialCards = [
     {
@@ -134,6 +130,12 @@ initialCards.forEach((elm) => {
     renderCards(elm);
 });
 
-deleteCards = () => {
+add.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const cardsNameLink = popupTitle.value
+    renderCards(cardsNameLink);
+    closePopupAdd();
+    const popupTitle = '';
+});
 
-}
+const popupTitle = document.querySelector('.popup__form_input_title');
