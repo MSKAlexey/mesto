@@ -24,6 +24,7 @@ const profileAboutMe = document.querySelector('.profile__subtitle');
 /* const popupTitle = document.querySelector('.popup__form_input_title'); */
 const popupLink = popupAdd.querySelector('.popup__form_input_link');
 /* console.log(popupTitle, popupLink) */
+
 // открытие popup
 const openPopupEdit = () => {
     popupEdit.classList.add('popup_opened');
@@ -111,7 +112,7 @@ const initialCards = [
 ];
 
 const cards = document.querySelector('.cards');
-const template = document.querySelector('#template')
+const template = document.querySelector('.template')
 
 const createCards = (cardsNameLink) => {
     const card = template.content.querySelector('.cards__item').cloneNode(true);
