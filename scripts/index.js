@@ -113,9 +113,12 @@ const initialCards = [
 
 const cards = document.querySelector('.cards');
 const template = document.querySelector('.template')
+    .content
+    .querySelector('.cards__item');
+// console.log(template)
 
 const createCards = (cardsNameLink) => {
-    const card = template.content.querySelector('.cards__item').cloneNode(true);
+    const card = template.cloneNode(true);
 
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
     card.querySelector('.cards__image').src = cardsNameLink.link;
@@ -130,13 +133,3 @@ const renderCards = (cardsNameLink) => {
 initialCards.forEach((elm) => {
     renderCards(elm);
 });
-
-add.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const cardsNameLink = popupTitle.value
-    renderCards(cardsNameLink);
-    closePopupAdd();
-    const popupTitle = '';
-});
-
-const popupTitle = document.querySelector('.popup__form_input_title');
