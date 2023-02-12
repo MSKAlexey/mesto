@@ -123,6 +123,7 @@ const createCards = (cardsNameLink) => {
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
     card.querySelector('.cards__image').src = cardsNameLink.link;
     card.querySelector('.cards__image').alt = cardsNameLink.name;
+    
     return card;
 };
 
