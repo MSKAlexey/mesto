@@ -111,26 +111,49 @@ const initialCards = [
     }
 ];
 
+// выбираем ul в который будем вставлять template
 const cards = document.querySelector('.cards');
+// выбираем template шаблон
 const template = document.querySelector('.template')
     .content
     .querySelector('.cards__item');
-// console.log(template)
-
+// создаем карточки по шаблону
 const createCards = (cardsNameLink) => {
     const card = template.cloneNode(true);
-
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
     card.querySelector('.cards__image').src = cardsNameLink.link;
     card.querySelector('.cards__image').alt = cardsNameLink.name;
-    
     return card;
 };
-
+// размещаем созданные карточки на странице
 const renderCards = (cardsNameLink) => {
     cards.append(createCards(cardsNameLink));
 };
-
+// делаем обход массива
 initialCards.forEach((elm) => {
     renderCards(elm);
 });
+
+// выбираем форму для обработки события
+const formAdd = popupAdd.querySelector('.form_add');
+
+const renderNewCards = (inputAddName, inputAddLink) => {
+    cards.prepend(createNewCards(inputAddName, inputAddLink));
+};
+const submitFormAdd = (event) => {
+    event.preventDefault();
+    const inputAddName = formAdd.querySelector('.popup__form_input_title').value;
+    const inputAddLink = formAdd.querySelector('.popup__form_input_link').value;
+    renderNewCards(inputAddName, inputAddLink);
+    closePopupAdd();
+};
+
+const createNewCards = (inputAddName, inputAddLink) => {
+    const card = template.cloneNode(true);
+    card.querySelector('.cards__title').textContent = inputAddName;
+    card.querySelector('.cards__image').src = inputAddLink;
+    card.querySelector('.cards__image').alt = inputAddName;
+    return card;
+};
+// вешаем обработчик события на форму
+formAdd.addEventListener('submit', submitFormAdd);
