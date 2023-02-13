@@ -123,6 +123,10 @@ const createCards = (cardsNameLink) => {
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
     card.querySelector('.cards__image').src = cardsNameLink.link;
     card.querySelector('.cards__image').alt = cardsNameLink.name;
+    const deleBtn = card.querySelector('.cards__trash');
+    deleBtn.addEventListener('click', () => {
+        card.remove();
+    })
     return card;
 };
 // размещаем созданные карточки на странице
@@ -156,6 +160,10 @@ const createNewCards = (cardAddName, cardAddLink) => {
     card.querySelector('.cards__title').textContent = cardAddName;
     card.querySelector('.cards__image').src = cardAddLink;
     card.querySelector('.cards__image').alt = cardAddName;
+    const deleBtn = card.querySelector('.cards__trash');
+    deleBtn.addEventListener('click', () => {
+        card.remove();
+    })
     return card;
 };
 // вешаем обработчик события на форму
