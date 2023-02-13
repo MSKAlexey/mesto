@@ -10,7 +10,6 @@
     opacity: 0.5;
 }
 
-.cards__icon:active {
+.cards__icon_active {
     background: url(../../../images/heart-active.svg);
-    opacity: 1;
 }

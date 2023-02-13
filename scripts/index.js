@@ -123,6 +123,11 @@ const createCards = (cardsNameLink) => {
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
     card.querySelector('.cards__image').src = cardsNameLink.link;
     card.querySelector('.cards__image').alt = cardsNameLink.name;
+    const likeBtn = card.querySelector('.cards__icon');
+    likeBtn.addEventListener('click', (event) => {
+        event.target.classList.toggle('cards__icon_active');
+
+    })
     const deleBtn = card.querySelector('.cards__trash');
     deleBtn.addEventListener('click', () => {
         card.remove();
@@ -160,6 +165,11 @@ const createNewCards = (cardAddName, cardAddLink) => {
     card.querySelector('.cards__title').textContent = cardAddName;
     card.querySelector('.cards__image').src = cardAddLink;
     card.querySelector('.cards__image').alt = cardAddName;
+    const likeBtn = card.querySelector('.cards__icon');
+    likeBtn.addEventListener('click', (event) => {
+        event.target.classList.toggle('cards__icon_active');
+
+    })
     const deleBtn = card.querySelector('.cards__trash');
     deleBtn.addEventListener('click', () => {
         card.remove();
