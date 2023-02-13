@@ -136,23 +136,26 @@ initialCards.forEach((elm) => {
 
 // выбираем форму для обработки события
 const formAdd = popupAdd.querySelector('.form_add');
-
+const inputAddName = formAdd.querySelector('.popup__form_input_title');
+const inputAddLink = formAdd.querySelector('.popup__form_input_link');
 const renderNewCards = (inputAddName, inputAddLink) => {
     cards.prepend(createNewCards(inputAddName, inputAddLink));
 };
 const submitFormAdd = (event) => {
     event.preventDefault();
-    const inputAddName = formAdd.querySelector('.popup__form_input_title').value;
-    const inputAddLink = formAdd.querySelector('.popup__form_input_link').value;
-    renderNewCards(inputAddName, inputAddLink);
+    const cardAddName = inputAddName.value;
+    const cardAddLink = inputAddLink.value;
+    renderNewCards(cardAddName, cardAddLink);
+    inputAddName.value = '';
+    inputAddLink.value = '';
     closePopupAdd();
 };
 
-const createNewCards = (inputAddName, inputAddLink) => {
+const createNewCards = (cardAddName, cardAddLink) => {
     const card = template.cloneNode(true);
-    card.querySelector('.cards__title').textContent = inputAddName;
-    card.querySelector('.cards__image').src = inputAddLink;
-    card.querySelector('.cards__image').alt = inputAddName;
+    card.querySelector('.cards__title').textContent = cardAddName;
+    card.querySelector('.cards__image').src = cardAddLink;
+    card.querySelector('.cards__image').alt = cardAddName;
     return card;
 };
 // вешаем обработчик события на форму
