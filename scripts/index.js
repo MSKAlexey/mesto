@@ -117,11 +117,11 @@ const createCards = (cardsNameLink) => {
         popupImage.src = popupOpenButtonImg.src;
     });
 
-
     const likeBtn = card.querySelector('.cards__icon');
-    likeBtn.addEventListener('click', () => {
-        popupImg.target.classList.toggle('cards__icon_active');
+    likeBtn.addEventListener('click', (event) => {
+        event.target.classList.toggle('cards__icon_active');
     })
+
     const deleBtn = card.querySelector('.cards__trash');
     deleBtn.addEventListener('click', () => {
         card.remove();
@@ -158,10 +158,12 @@ const createNewCards = (cardAddName, cardAddLink) => {
     card.querySelector('.cards__image').src = cardAddLink;
     card.querySelector('.cards__image').alt = cardAddName;
 
+    const popupImage = popupImg.querySelector('.popup__image');
     const popupOpenButtonImg = card.querySelector('.cards__image');
-    const openPopupImg = () => {
-        card.classList.toggle('popup_opened');
-    }
+    const openPopupImg = popupOpenButtonImg.addEventListener('click', () => {
+        popupImg.classList.add('popup_opened');
+        popupImage.src = popupOpenButtonImg.src;
+    });
 
     const likeBtn = card.querySelector('.cards__icon');
     likeBtn.addEventListener('click', (event) => {
