@@ -111,10 +111,12 @@ const createCards = (cardsNameLink) => {
     card.querySelector('.cards__image').alt = cardsNameLink.name;
 
     const popupImage = popupImg.querySelector('.popup__image');
+    const popupName = popupImg.querySelector('.popup__name');
     const popupOpenButtonImg = card.querySelector('.cards__image');
     const openPopupImg = popupOpenButtonImg.addEventListener('click', () => {
         popupImg.classList.add('popup_opened');
         popupImage.src = popupOpenButtonImg.src;
+        popupName.textContent = cardsNameLink.name;
     });
 
     const likeBtn = card.querySelector('.cards__icon');
@@ -159,10 +161,12 @@ const createNewCards = (cardAddName, cardAddLink) => {
     card.querySelector('.cards__image').alt = cardAddName;
 
     const popupImage = popupImg.querySelector('.popup__image');
+    const popupName = popupImg.querySelector('.popup__name');
     const popupOpenButtonImg = card.querySelector('.cards__image');
     const openPopupImg = popupOpenButtonImg.addEventListener('click', () => {
         popupImg.classList.add('popup_opened');
         popupImage.src = popupOpenButtonImg.src;
+        popupName.textContent = cardAddName;
     });
 
     const likeBtn = card.querySelector('.cards__icon');
