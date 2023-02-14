@@ -11,5 +11,5 @@
 }
 
 .cards__icon_active {
-    background: url(../../../images/heart-active.svg);
+    background: url(../../../images/heart-active.svg) no-repeat center;;
 }
