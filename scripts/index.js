@@ -77,8 +77,6 @@ const createCard = (cardsNameLink) => {
     card.querySelector('.cards__image').src = cardsNameLink.link;
     card.querySelector('.cards__image').alt = cardsNameLink.name;
 
-
-
     const popupImage = popupImg.querySelector('.popup__image');
     const popupName = popupImg.querySelector('.popup__name');
     const popupOpenButtonImg = card.querySelector('.cards__image');
@@ -86,13 +84,12 @@ const createCard = (cardsNameLink) => {
         popupImg.classList.add('popup_opened');
         popupImage.src = popupOpenButtonImg.src;
         popupName.textContent = cardsNameLink.name;
+        popupImage.alt = cardsNameLink.name;
     });
-
 
     const renderNewCards = () => {
         cardsContainer.prepend(createNewCard());
     };
-
 
     const likeBtn = card.querySelector('.cards__icon');
     likeBtn.addEventListener('click', (event) => {
@@ -121,8 +118,8 @@ const inputAddLink = formAdd.querySelector('.popup__form_input_link');
 
 const submitFormAdd = (event) => {
     event.preventDefault();
-    const card = { name: inputAddName.value, link: inputAddLink.value, };
-    renderCards(card);
+    const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
+    renderCards(cardsNameLink);
     inputAddName.value = '';
     inputAddLink.value = '';
     closePopup(popupAddCard);
