@@ -1,58 +1,63 @@
 // popup
-const popupEdit = document.querySelector('.popup_edit');
-const popupAdd = document.querySelector('.popup_add');
+const popupEditHead = document.querySelector('.popup_edit');
+const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
 // popup button close
-const popupCloseButtonEdit = popupEdit.querySelector('.popup__close');
-const popupCloseButtonAdd = popupAdd.querySelector('.popup__close');
+const popupCloseButtonEdit = popupEditHead.querySelector('.popup__close');
+const popupCloseButtonAdd = popupAddCard.querySelector('.popup__close');
 const popupCloseButtonImg = popupImg.querySelector('.popup__close');
 // popup button open
 const popupOpenButtonEdit = document.querySelector('.profile__popup-open');
 const popupOpenButtonAdd = document.querySelector('.profile__vector');
 // popup button save
-const saveBtn = document.querySelector('.popup__button-save');
-const popupName = popupEdit.querySelector('.popup__form_input_name');
-const popupAbout = popupEdit.querySelector('.popup__form_input_about');
+const popupName = popupEditHead.querySelector('.popup__form_input_name');
+const popupAbout = popupEditHead.querySelector('.popup__form_input_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
-const popupLink = popupAdd.querySelector('.popup__form_input_link');
+const popupLink = popupAddCard.querySelector('.popup__form_input_link');
 // открытие popup
-const openPopupEdit = () => {
-    popupEdit.classList.add('popup_opened');
+/* const openPopupEditHead = () => {
+    popupEditHead.classList.add('popup_opened');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
 }
-const openPopupAdd = () => {
-    popupAdd.classList.add('popup_opened');
+const openPopupAddCard = () => {
+    popupAddCard.classList.add('popup_opened');
 }
 // закрытие popup
-const closePopupEdit = () => {
-    popupEdit.classList.remove('popup_opened');
+const closePopupEditHead = () => {
+    popupEditHead.classList.remove('popup_opened');
 }
-const closePopupAdd = () => {
-    popupAdd.classList.remove('popup_opened');
+const closePopupAddCard = () => {
+    popupAddCard.classList.remove('popup_opened');
 }
 const closePopupImg = () => {
     popupImg.classList.remove('popup_opened');
+} */
+const openPopup = () => {
+    popup.target.classList.add('.popup_opened');
+}
+const closePopup = () => {
+    popup.classList.remove('popup_opened');
 }
 // слушаем событие
-popupOpenButtonEdit.addEventListener('click', openPopupEdit);
-popupCloseButtonEdit.addEventListener('click', closePopupEdit);
-popupOpenButtonAdd.addEventListener('click', openPopupAdd);
-popupCloseButtonAdd.addEventListener('click', closePopupAdd);
+popupOpenButtonEdit.addEventListener('click', openPopupEditHead);
+popupCloseButtonEdit.addEventListener('click', closePopupEditHead);
+popupOpenButtonAdd.addEventListener('click', openPopupAddCard);
+popupCloseButtonAdd.addEventListener('click', closePopupAddCard);
 popupCloseButtonImg.addEventListener('click', closePopupImg);
 // закрытие popup при нажатие вне формы
-const closePopupEditByClickOnOverlay = (event) => {
+const closePopupEditHeadByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
-    closePopupEdit();
+    closePopupEditHead();
 }
-const closePopupAddByClickOnOverlay = (event) => {
+const closePopupAddCardByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
-    closePopupAdd();
+    closePopupAddCard();
 }
 const closePopupImgByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
@@ -61,14 +66,14 @@ const closePopupImgByClickOnOverlay = (event) => {
     closePopupImg();
 }
 // слушаем событие нажатия вне формы и закрываем popup если оно есть
-popupEdit.addEventListener('click', closePopupEditByClickOnOverlay);
-popupAdd.addEventListener('click', closePopupAddByClickOnOverlay);
+popupEditHead.addEventListener('click', closePopupEditHeadByClickOnOverlay);
+popupAddCard.addEventListener('click', closePopupAddCardByClickOnOverlay);
 popupImg.addEventListener('click', closePopupImgByClickOnOverlay);
 edit.addEventListener('submit', (event) => {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
-    closePopupEdit();
+    closePopupEditHead();
 });
 
 const initialCards = [
@@ -139,7 +144,7 @@ initialCards.forEach((elm) => {
     renderCards(elm);
 });
 // выбираем форму для обработки события
-const formAdd = popupAdd.querySelector('.form_add');
+const formAdd = popupAddCard.querySelector('.form_add');
 const inputAddName = formAdd.querySelector('.popup__form_input_title');
 const inputAddLink = formAdd.querySelector('.popup__form_input_link');
 const renderNewCards = (inputAddName, inputAddLink) => {
@@ -152,7 +157,7 @@ const submitFormAdd = (event) => {
     renderNewCards(cardAddName, cardAddLink);
     inputAddName.value = '';
     inputAddLink.value = '';
-    closePopupAdd();
+    closePopupAddCard();
 };
 const createNewCards = (cardAddName, cardAddLink) => {
     const card = template.cloneNode(true);
