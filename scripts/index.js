@@ -99,8 +99,8 @@ const createCard = (cardsNameLink) => {
         event.target.classList.toggle('cards__icon_active');
     })
 
-    const deleBtn = card.querySelector('.cards__trash');
-    deleBtn.addEventListener('click', () => {
+    const treshButtonDelete = card.querySelector('.cards__trash');
+    treshButtonDelete.addEventListener('click', () => {
         card.remove();
     })
     return card;
@@ -108,7 +108,7 @@ const createCard = (cardsNameLink) => {
 
 // размещаем созданные карточки на странице
 const renderCards = (cardsNameLink) => {
-    cardsContainer.append(createCard(cardsNameLink));
+    cardsContainer.prepend(createCard(cardsNameLink));
 };
 // делаем обход массива
 initialCards.forEach((elm) => {
@@ -118,11 +118,11 @@ initialCards.forEach((elm) => {
 const formAdd = popupAddCard.querySelector('.form_add');
 const inputAddName = formAdd.querySelector('.popup__form_input_title');
 const inputAddLink = formAdd.querySelector('.popup__form_input_link');
+
 const submitFormAdd = (event) => {
     event.preventDefault();
-    const cardAddName = inputAddName.value;
-    const cardAddLink = inputAddLink.value;
-    renderNewCard(cardsNameLink);
+    const card = { name: inputAddName.value, link: inputAddLink.value, };
+    renderCards(card);
     inputAddName.value = '';
     inputAddLink.value = '';
     closePopup(popupAddCard);
