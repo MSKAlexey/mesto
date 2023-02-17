@@ -1,79 +1,66 @@
-// popup
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
-// popup button close
-const popupCloseButtonEdit = popupEditHead.querySelector('.popup__close');
-const popupCloseButtonAdd = popupAddCard.querySelector('.popup__close');
-const popupCloseButtonImg = popupImg.querySelector('.popup__close');
 // popup button open
-const popupOpenButtonEdit = document.querySelector('.profile__popup-open');
-const popupOpenButtonAdd = document.querySelector('.profile__vector');
-// popup button save
+const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
+const popupOpenButtonAddCard = document.querySelector('.profile__vector');
+// popup button close
+const popupCloseButtonEditHead = popupEditHead.querySelector('.popup__close');
+const popupCloseButtonAddCard = popupAddCard.querySelector('.popup__close');
+const popupCloseButtonImg = popupImg.querySelector('.popup__close');
+
 const popupName = popupEditHead.querySelector('.popup__form_input_name');
 const popupAbout = popupEditHead.querySelector('.popup__form_input_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
 const popupLink = popupAddCard.querySelector('.popup__form_input_link');
-// открытие popup
-/* const openPopupEditHead = () => {
-    popupEditHead.classList.add('popup_opened');
-    popupName.value = profileName.textContent;
-    popupAbout.value = profileAboutMe.textContent;
+// открытие/закрытие popup
+const openPopup = (popup) => {
+    popup.classList.add('popup_opened');
 }
-const openPopupAddCard = () => {
-    popupAddCard.classList.add('popup_opened');
-}
-// закрытие popup
-const closePopupEditHead = () => {
-    popupEditHead.classList.remove('popup_opened');
-}
-const closePopupAddCard = () => {
-    popupAddCard.classList.remove('popup_opened');
-}
-const closePopupImg = () => {
-    popupImg.classList.remove('popup_opened');
-} */
-const openPopup = () => {
-    popup.target.classList.add('.popup_opened');
-}
-const closePopup = () => {
+const closePopup = (popup) => {
     popup.classList.remove('popup_opened');
 }
-// слушаем событие
-popupOpenButtonEdit.addEventListener('click', openPopupEditHead);
-popupCloseButtonEdit.addEventListener('click', closePopupEditHead);
-popupOpenButtonAdd.addEventListener('click', openPopupAddCard);
-popupCloseButtonAdd.addEventListener('click', closePopupAddCard);
-popupCloseButtonImg.addEventListener('click', closePopupImg);
+
+popupOpenButtonEditHead.addEventListener('click', () => {
+    popupName.value = profileName.textContent;
+    popupAbout.value = profileAboutMe.textContent;
+    openPopup(popupEditHead);
+});
+popupOpenButtonAddCard.addEventListener('click', () => openPopup(popupAddCard));
+
+popupCloseButtonEditHead.addEventListener('click', () => closePopup(popupEditHead));
+popupCloseButtonAddCard.addEventListener('click', () => closePopup(popupAddCard));
+popupCloseButtonImg.addEventListener('click', () => closePopup(popupImg));
 // закрытие popup при нажатие вне формы
 const closePopupEditHeadByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
-    closePopupEditHead();
+    closePopup(popupEditHead);
 }
 const closePopupAddCardByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
-    closePopupAddCard();
+    closePopup(popupAddCard);
 }
 const closePopupImgByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
         return;
     }
-    closePopupImg();
+    closePopup(popupImg);
 }
 // слушаем событие нажатия вне формы и закрываем popup если оно есть
 popupEditHead.addEventListener('click', closePopupEditHeadByClickOnOverlay);
 popupAddCard.addEventListener('click', closePopupAddCardByClickOnOverlay);
 popupImg.addEventListener('click', closePopupImgByClickOnOverlay);
+
 edit.addEventListener('submit', (event) => {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
-    closePopupEditHead();
+    closePopup(popupEditHead);
 });
 
 const initialCards = [
@@ -157,7 +144,7 @@ const submitFormAdd = (event) => {
     renderNewCards(cardAddName, cardAddLink);
     inputAddName.value = '';
     inputAddLink.value = '';
-    closePopupAddCard();
+    closePopup(popupAddCard);
 };
 const createNewCards = (cardAddName, cardAddLink) => {
     const card = template.cloneNode(true);
@@ -177,13 +164,11 @@ const createNewCards = (cardAddName, cardAddLink) => {
     const likeBtn = card.querySelector('.cards__icon');
     likeBtn.addEventListener('click', (event) => {
         event.target.classList.toggle('cards__icon_active');
-
     })
     const deleBtn = card.querySelector('.cards__trash');
     deleBtn.addEventListener('click', () => {
         card.remove();
     })
-
     return card;
 };
 // вешаем обработчик события на форму
