@@ -83,17 +83,13 @@ const createCard = (cardsNameLink) => {
 
     const popupImage = popupImg.querySelector('.popup__image');
     const popupName = popupImg.querySelector('.popup__name');
-    
+
     popupOpenButtonImg.addEventListener('click', () => {
         popupImg.classList.add('popup_opened');
         popupImage.src = popupOpenButtonImg.src;
         popupName.textContent = cardsNameLink.name;
         popupImage.alt = cardsNameLink.name;
     });
-
-    const renderNewCards = () => {
-        cardsContainer.prepend(createNewCard());
-    };
 
     const likeBtn = card.querySelector('.cards__icon');
     likeBtn.addEventListener('click', (event) => {
@@ -123,4 +119,5 @@ const submitFormAdd = (event) => {
     inputAddLink.value = '';
     closePopup(popupAddCard);
 };
+
 formAdd.addEventListener('submit', submitFormAdd);
