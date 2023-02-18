@@ -14,6 +14,16 @@ const popupAbout = popupEditHead.querySelector('.popup__form_input_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
 const popupLink = popupAddCard.querySelector('.popup__form_input_link');
+// выбираем ul в который будем вставлять template
+const cardsContainer = document.querySelector('.cards');
+// выбираем template шаблон
+const template = document.querySelector('.template')
+    .content
+    .querySelector('.cards__item');
+
+const formAdd = popupAddCard.querySelector('.form_add');
+const inputAddName = formAdd.querySelector('.popup__form_input_title');
+const inputAddLink = formAdd.querySelector('.popup__form_input_link');
 // открытие/закрытие popup
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
@@ -63,23 +73,17 @@ form.addEventListener('submit', (event) => {
     closePopup(popupEditHead);
 });
 
-// выбираем ul в который будем вставлять template
-const cardsContainer = document.querySelector('.cards');
-// выбираем template шаблон
-const template = document.querySelector('.template')
-    .content
-    .querySelector('.cards__item');
-
 // создаем карточки по шаблону
 const createCard = (cardsNameLink) => {
     const card = template.cloneNode(true);
+    const popupOpenButtonImg = card.querySelector('.cards__image');
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
-    card.querySelector('.cards__image').src = cardsNameLink.link;
-    card.querySelector('.cards__image').alt = cardsNameLink.name;
+    popupOpenButtonImg.src = cardsNameLink.link;
+    popupOpenButtonImg.alt = cardsNameLink.name;
 
     const popupImage = popupImg.querySelector('.popup__image');
     const popupName = popupImg.querySelector('.popup__name');
-    const popupOpenButtonImg = card.querySelector('.cards__image');
+    
     popupOpenButtonImg.addEventListener('click', () => {
         popupImg.classList.add('popup_opened');
         popupImage.src = popupOpenButtonImg.src;
@@ -96,13 +100,12 @@ const createCard = (cardsNameLink) => {
         event.target.classList.toggle('cards__icon_active');
     })
 
-    const treshButtonDelete = card.querySelector('.cards__trash');
-    treshButtonDelete.addEventListener('click', () => {
+    const trashButtonDelete = card.querySelector('.cards__trash');
+    trashButtonDelete.addEventListener('click', () => {
         card.remove();
     })
     return card;
 };
-
 // размещаем созданные карточки на странице
 const renderCards = (cardsNameLink) => {
     cardsContainer.prepend(createCard(cardsNameLink));
@@ -111,10 +114,6 @@ const renderCards = (cardsNameLink) => {
 initialCards.forEach((elm) => {
     renderCards(elm);
 });
-
-const formAdd = popupAddCard.querySelector('.form_add');
-const inputAddName = formAdd.querySelector('.popup__form_input_title');
-const inputAddLink = formAdd.querySelector('.popup__form_input_link');
 
 const submitFormAdd = (event) => {
     event.preventDefault();
