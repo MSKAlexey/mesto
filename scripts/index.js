@@ -14,6 +14,8 @@ const popupAbout = popupEditHead.querySelector('.popup__form_input_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
 const popupLink = popupAddCard.querySelector('.popup__form_input_link');
+const popupImage = popupImg.querySelector('.popup__image');
+const popupImgName = popupImg.querySelector('.popup__name');
 // выбираем ul в который будем вставлять template
 const cardsContainer = document.querySelector('.cards');
 // выбираем template шаблон
@@ -81,13 +83,12 @@ const createCard = (cardsNameLink) => {
     popupOpenButtonImg.src = cardsNameLink.link;
     popupOpenButtonImg.alt = cardsNameLink.name;
 
-    const popupImage = popupImg.querySelector('.popup__image');
-    const popupName = popupImg.querySelector('.popup__name');
+
 
     popupOpenButtonImg.addEventListener('click', () => {
         popupImg.classList.add('popup_opened');
         popupImage.src = popupOpenButtonImg.src;
-        popupName.textContent = cardsNameLink.name;
+        popupImgName.textContent = cardsNameLink.name;
         popupImage.alt = cardsNameLink.name;
     });
 
