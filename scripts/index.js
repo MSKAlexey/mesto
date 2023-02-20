@@ -32,7 +32,7 @@ const openPopup = (popup) => {
 }
 const closePopup = (popup) => {
     popup.classList.remove('popup_opened');
-    /* document.removeEventListener('keydown', closePopupByEscape); */
+    document.removeEventListener('keydown', closePopupByEscape);
 }
 
 const closePopupByEscape = (event) => {
