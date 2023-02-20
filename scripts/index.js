@@ -6,10 +6,7 @@ const popupImg = document.querySelector('.popup_img');
 const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 const popupOpenButtonAddCard = document.querySelector('.profile__vector');
 // popup button close
-/* const popupCloseButtonEditHead = popupEditHead.querySelector('.popup__close');
-const popupCloseButtonAddCard = popupAddCard.querySelector('.popup__close');
-const popupCloseButtonImg = popupImg.querySelector('.popup__close'); */
-const popupCloseButton = document.querySelector('.popup__close')
+const popupCloseButtonList = Array.from(document.querySelectorAll('.popup__close'));
 
 const popupName = popupEditHead.querySelector('.popup__form_input_name');
 const popupAbout = popupEditHead.querySelector('.popup__form_input_about');
@@ -48,12 +45,16 @@ popupOpenButtonEditHead.addEventListener('click', () => {
     popupAbout.value = profileAboutMe.textContent;
     openPopup(popupEditHead);
 });
+
 popupOpenButtonAddCard.addEventListener('click', () => openPopup(popupAddCard));
 
-popupCloseButton.addEventListener('click', () => closePopup(document.querySelector('.popup_opened')));
-/* popupCloseButtonEditHead.addEventListener('click', () => closePopup(popupEditHead));
-popupCloseButtonAddCard.addEventListener('click', () => closePopup(popupAddCard));
-popupCloseButtonImg.addEventListener('click', () => closePopup(popupImg)); */
+popupCloseButtonList.forEach((closeButton) => {
+    closeButton.addEventListener('click', (event) => {
+        const popup = event.target.closest('.popup');
+        closePopup(popup);
+    });
+});
+
 // закрытие popup при нажатие вне формы
 const closePopupByClickOnOverlay = (event) => {
     if (event.target !== event.currentTarget) {
@@ -81,8 +82,6 @@ const createCard = (cardsNameLink) => {
     card.querySelector('.cards__title').textContent = cardsNameLink.name;
     popupOpenButtonImg.src = cardsNameLink.link;
     popupOpenButtonImg.alt = cardsNameLink.name;
-
-
 
     popupOpenButtonImg.addEventListener('click', () => {
         popupImg.classList.add('popup_opened');
