@@ -8,11 +8,11 @@ const popupOpenButtonAddCard = document.querySelector('.profile__vector');
 // popup button close
 const popupCloseButtonList = Array.from(document.querySelectorAll('.popup__close'));
 
-const popupName = popupEditHead.querySelector('.popup__form_input_name');
-const popupAbout = popupEditHead.querySelector('.popup__form_input_about');
+const popupName = popupEditHead.querySelector('.popup__input_type_name');
+const popupAbout = popupEditHead.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
-const popupLink = popupAddCard.querySelector('.popup__form_input_link');
+const popupLink = popupAddCard.querySelector('.popup__input_type_link');
 const popupImage = popupImg.querySelector('.popup__image');
 const popupImgName = popupImg.querySelector('.popup__name');
 // выбираем ul в который будем вставлять template
@@ -23,8 +23,8 @@ const template = document.querySelector('.template')
     .querySelector('.cards__item');
 
 const formAdd = popupAddCard.querySelector('.form_add');
-const inputAddName = formAdd.querySelector('.popup__form_input_title');
-const inputAddLink = formAdd.querySelector('.popup__form_input_link');
+const inputAddName = formAdd.querySelector('.popup__input_type_title');
+const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 // открытие/закрытие popup
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
