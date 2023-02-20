@@ -28,14 +28,15 @@ const inputAddLink = formAdd.querySelector('.popup__form_input_link');
 // открытие/закрытие popup
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEscape);
 }
 const closePopup = (popup) => {
     popup.classList.remove('popup_opened');
-    document.addEventListener('keydown', closePopupByEscape);
+    /* document.removeEventListener('keydown', closePopupByEscape); */
 }
 
 const closePopupByEscape = (event) => {
-    if (event.keyCode == 27) {
+    if (event.key === 'Escape') {
         closePopup(document.querySelector('.popup_opened'));
     }
 };
