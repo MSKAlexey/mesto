@@ -65,3 +65,5 @@
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/_img/popup_img.css);
 /* Конец блока popup */
+
+@import url(../blocks/error/error.css);

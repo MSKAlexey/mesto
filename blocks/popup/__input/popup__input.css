@@ -10,3 +10,7 @@
     padding: 0 0 8px 0;
     margin: 32px 0 0 0;
 }
+
+.popup__input.popup__input_type_error {
+    border-color: red;
+}

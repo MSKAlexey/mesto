@@ -3,6 +3,7 @@
 const formValidationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
+    errorClass: 'popup__input_type_error',
 }
 // console.log(formValidationConfig);
 const stopWindowResetOnSubmit = (event) => {
@@ -17,16 +18,24 @@ function enableValidation(config) {
 }
 enableValidation(formValidationConfig);
 
-function handleFormInput (event) {
-    // console.log('event', event);
+function handleFormInput(event, config) {
+    // console.log(config);
     const input = event.target;
-    // console.log(input.validity);
+
+    if (input.validity.valid) {
+        input.classList.remove(config.errorClass)
+    } else {
+        input.classList.add(config.errorClass)
+    }
+
 }
 
 function addInputListners(form, config) {
-    const inputList = Array.from(popupEditHead.querySelectorAll(config.inputSelector));
+    const inputList = Array.from(document.querySelectorAll(config.inputSelector));
     inputList.forEach((item) => {
-        item.addEventListener('input', handleFormInput);
+        item.addEventListener('input', (event) => {
+            handleFormInput(event, config)
+        });
     });
     // console.log(inputList);
 }
