@@ -5,6 +5,7 @@ const formValidationConfig = {
     inputSelector: '.popup__input',
     errorClass: 'popup__input_type_error',
     buttonSelector: '.popup__button-save',
+    buttonDisabledClass: 'popup__button-save_disabled',
 }
 // console.log(formValidationConfig);
 const stopWindowResetOnSubmit = (event) => {
@@ -14,6 +15,9 @@ function enableValidation(config) {
     const form = document.querySelector(config.formSelector);
     // console.log(form);
     form.addEventListener('submit', stopWindowResetOnSubmit);
+    form.addEventListener('input', () => {
+        toggleEnableButtonSubmit(form, config);
+    });
     addInputListners(form, config);
     // console.log('arguments', arguments); для проверки всех переданых аргументов в функцию
     toggleEnableButtonSubmit(form, config);
@@ -39,7 +43,10 @@ function handleFormInput(event, config) {
 }
 
 function toggleEnableButtonSubmit (form, config) {
-    const buttonSubmit = form.querySelectorAll(config.buttonSelector);
+    const buttonSubmit = form.querySelector(config.buttonSelector);
+    const isFormValidity = form.checkValidity();
+    buttonSubmit.disabled = !isFormValidity;
+    buttonSubmit.classList.toggle('popup__button-save_disabled', !isFormValidity);
     console.log(buttonSubmit);
 }
 
