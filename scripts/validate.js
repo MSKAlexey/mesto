@@ -21,6 +21,7 @@ enableValidation(formValidationConfig);
 function handleFormInput(event, config) {
     // console.log(config);
     const input = event.target;
+    // console.log(input.id);
 
     if (input.validity.valid) {
         input.classList.remove(config.errorClass)
