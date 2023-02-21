@@ -2,8 +2,8 @@ const formValidationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     errorClass: 'popup__input_type_error',
-    buttonSelector: '.popup__button-save',
-    buttonDisabledClass: 'popup__button-save_disabled',
+    buttonSelector: '.popup__button',
+    buttonDisabledClass: 'popup__button_disabled',
 };
 const formList = Array.from(document.querySelectorAll(formValidationConfig.formSelector));
 const stopWindowResetOnSubmit = (event) => {
