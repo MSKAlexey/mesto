@@ -11,7 +11,7 @@ const stopWindowResetOnSubmit = (event) => {
     event.preventDefault();
 };
 function enableValidation(config) {
-    const form = document.querySelectorAll(config.formSelector);
+    const form = document.querySelector(config.formSelector);
     // console.log(form);
     form.addEventListener('submit', stopWindowResetOnSubmit);
     addInputListners(form, config);
