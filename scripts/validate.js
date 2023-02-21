@@ -18,17 +18,15 @@ function enableValidation(config) {
 enableValidation(formValidationConfig);
 
 function handleFormInput (event) {
-    console.log('event', event);
+    // console.log('event', event);
     const input = event.target;
-    console.log('input', input);
+    // console.log(input.validity);
 }
 
 function addInputListners(form, config) {
     const inputList = Array.from(popupEditHead.querySelectorAll(config.inputSelector));
     inputList.forEach((item) => {
-        item.addEventListener('input', () => {
-            // console.log('Trigger'); показывает в одном месте сколько раз было нажатие или изменение
-        })
+        item.addEventListener('input', handleFormInput);
     });
     // console.log(inputList);
 }
