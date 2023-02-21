@@ -69,8 +69,8 @@ popupEditHead.addEventListener('click', closePopupByClickOnOverlay);
 popupAddCard.addEventListener('click', closePopupByClickOnOverlay);
 popupImg.addEventListener('click', closePopupByClickOnOverlay);
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
+form.addEventListener('submit', () => {
+    /* event.preventDefault(); */
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
     closePopup(popupEditHead);
@@ -111,8 +111,8 @@ initialCards.forEach((elm) => {
     renderCards(elm);
 });
 
-const submitFormAdd = (event) => {
-    event.preventDefault();
+const submitFormAdd = () => {
+    /* event.preventDefault(); */
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
     renderCards(cardsNameLink);
     inputAddName.value = '';

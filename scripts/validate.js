@@ -5,9 +5,31 @@ const formValidationConfig = {
     inputSelector: '.popup__input',
 }
 // console.log(formValidationConfig);
+const stopWindowResetOnSubmit = (event) => {
+    event.preventDefault();
+};
 function enableValidation(config) {
     const form = document.querySelector(config.formSelector);
-    console.log('form', form);
-// console.log('arguments', arguments); для проверки всех переданых аргументов в функцию
+    // console.log(form);
+    form.addEventListener('submit', stopWindowResetOnSubmit);
+    addInputListners(form, config);
+    // console.log('arguments', arguments); для проверки всех переданых аргументов в функцию
 }
 enableValidation(formValidationConfig);
+
+function handleFormInput (event) {
+    console.log('event', event);
+    const input = event.target;
+    console.log('input', input);
+}
+
+function addInputListners(form, config) {
+    const inputList = Array.from(popupEditHead.querySelectorAll(config.inputSelector));
+    inputList.forEach((item) => {
+        item.addEventListener('input', () => {
+            // console.log('Trigger'); показывает в одном месте сколько раз было нажатие или изменение
+        })
+    });
+    // console.log(inputList);
+}
+
