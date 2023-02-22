@@ -50,6 +50,7 @@ function toggleEnableButtonSubmit(form, config) {
     const buttonSubmit = form.querySelector(config.buttonSelector);
     //console.log('buttonSubmit', buttonSubmit)
     const isFormValidity = form.checkValidity();
+    console.log('isFormValidity', isFormValidity)
     buttonSubmit.disabled = !isFormValidity;
     buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
 };
