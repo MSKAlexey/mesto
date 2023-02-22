@@ -36,7 +36,7 @@ function toggleEnableButtonSubmit(form, config) {
     const buttonSubmit = form.querySelector(config.buttonSelector);
     const isFormValidity = form.checkValidity();
     buttonSubmit.disabled = !isFormValidity;
-    buttonSubmit.classList.toggle('popup__button-save_disabled', !isFormValidity);
+    buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
 };
 function addInputListners(form, config) {
     const inputList = Array.from(document.querySelectorAll(config.inputSelector));
