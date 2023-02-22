@@ -7,20 +7,27 @@ const formValidationConfig = {
 };
 const formList = Array.from(document.querySelectorAll(formValidationConfig.formSelector));
 const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
+
 const stopWindowResetOnSubmit = (event) => {
     event.preventDefault();
 };
 function enableValidation(config) {
     formList.forEach((form) => {
-        form.addEventListener('submit', stopWindowResetOnSubmit);
-        form.addEventListener('input', () => {
-            toggleEnableButtonSubmit(form, config);
-        });
-        addInputListners(form, config);
-        toggleEnableButtonSubmit(form, config);
+        enableFormValidate(form, config);
     });
 };
+
 enableValidation(formValidationConfig);
+
+function enableFormValidate(form, config) {
+    form.addEventListener('submit', stopWindowResetOnSubmit);
+    form.addEventListener('input', () => {
+        toggleEnableButtonSubmit(form, config);
+    });
+    addInputListners(form, config);
+    toggleEnableButtonSubmit(form, config);
+}
+
 function handleFormInput(event, config) {
     const input = event.target;
     const inputId = input.id;
@@ -39,7 +46,7 @@ function toggleEnableButtonSubmit(form, config) {
     buttonSubmit.disabled = !isFormValidity;
     buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
 };
-function addInputListners(form, config) { 
+function addInputListners(form, config) {
     inputList.forEach((item) => {
         item.addEventListener('input', (event) => {
             handleFormInput(event, config)

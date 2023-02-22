@@ -29,7 +29,6 @@ const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 // открытие/закрытие popup
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
-    const buttonSubmit = popup.querySelector('.popup__button');
     document.addEventListener('keydown', closePopupByEscape);
 }
 const closePopup = (popup) => {
