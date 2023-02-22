@@ -59,8 +59,8 @@
             <button type="button" class="popup__close cursor"></button>
             <form class="popup__form form_edit" action="#" method="get" name="form" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input id="input-name" class="popup__input popup__input_type_name" type="text" minlength="2" maxlength="40"><span id="input-name-error" class="error"></span>
-                <input id="input-about" class="popup__input popup__input_type_about" type="text" minlength="2" maxlength="200"><span id="input-about-error" class="error"></span>
+                <input id="input-name" class="popup__input popup__input_type_name" type="text" minlength="2" maxlength="40" required><span id="input-name-error" class="error"></span>
+                <input id="input-about" class="popup__input popup__input_type_about" type="text" minlength="2" maxlength="200" required><span id="input-about-error" class="error"></span>
                 <button type="submit" name="button" class="popup__button cursor">Сохранить</button>
             </form>
         </div>
@@ -71,8 +71,8 @@
             <button type="button" class="popup__close cursor"></button>
             <form class="popup__form form_add" action="#" method="get" name="add" novalidate>
                 <h2 class="popup__title">Новое место</h2>
-                <input id="input-title" class="popup__input popup__input_type_title" type="text" placeholder="Название" minlength="2" maxlength="30"><span id="input-title-error" class="error"></span>
-                <input id="input-link" class="popup__input popup__input_type_link" type="url" placeholder="Ссылка на картинку"><span id="input-link-error" class="error"></span>
+                <input id="input-title" class="popup__input popup__input_type_title" type="text" placeholder="Название" minlength="2" maxlength="30" required><span id="input-title-error" class="error"></span>
+                <input id="input-link" class="popup__input popup__input_type_link" type="url" placeholder="Ссылка на картинку" required><span id="input-link-error" class="error"></span>
                 <button type="submit" name="button" class="popup__button cursor">Создать</button>
             </form>
         </div>

@@ -30,8 +30,6 @@ const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
     const buttonSubmit = popup.querySelector('.popup__button');
-    buttonSubmit.disabled = true;
-    buttonSubmit.classList.add('popup__button_disabled');
     document.addEventListener('keydown', closePopupByEscape);
 }
 const closePopup = (popup) => {
