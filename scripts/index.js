@@ -2,6 +2,7 @@ const popup = document.querySelector('.popup');
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
+
 // popup button open
 const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 const popupOpenButtonAddCard = document.querySelector('.profile__vector');
@@ -28,6 +29,7 @@ const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 // открытие/закрытие popup
 const openPopup = (popup) => {
     popup.classList.add('popup_opened');
+    
     document.addEventListener('keydown', closePopupByEscape);
 }
 const closePopup = (popup) => {
