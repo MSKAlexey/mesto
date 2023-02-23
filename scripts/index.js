@@ -26,21 +26,7 @@ const template = document.querySelector('.template')
 const formAdd = popupAddCard.querySelector('.form_add');
 const inputAddName = formAdd.querySelector('.popup__input_type_title');
 const inputAddLink = formAdd.querySelector('.popup__input_type_link');
-// открытие/закрытие popup
-const openPopup = (popup) => {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByEscape);
-}
-const closePopup = (popup) => {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupByEscape);
-}
 
-const closePopupByEscape = (event) => {
-    if (event.key === 'Escape') {
-        closePopup(document.querySelector('.popup_opened'));
-    }
-};
 
 popupOpenButtonEditHead.addEventListener('click', () => {
     popupName.value = profileName.textContent;
@@ -122,3 +108,23 @@ const submitFormAdd = () => {
 };
 
 formAdd.addEventListener('submit', submitFormAdd);
+
+// открытие/закрытие popup
+const openPopup = (popup) => {
+    popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEscape);
+    const buttonSubmit = form.querySelector(formValidationConfig.buttonSelector);
+    buttonSubmit.disabled = true;
+    buttonSubmit.classList.add('popup__button_disabled');
+}
+const closePopup = (popup) => {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupByEscape);
+
+}
+
+const closePopupByEscape = (event) => {
+    if (event.key === 'Escape') {
+        closePopup(document.querySelector('.popup_opened'));
+    }
+};
