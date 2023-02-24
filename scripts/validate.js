@@ -5,12 +5,12 @@ const formValidationConfig = {
     buttonSelector: '.popup__button',
     buttonDisabledClass: 'popup__button_disabled',
 };
-const formList = Array.from(document.querySelectorAll(formValidationConfig.formSelector));
 const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
 const stopWindowResetOnSubmit = (event) => {
     event.preventDefault();
 };
 function enableValidation(config) {
+    const formList = Array.from(document.querySelectorAll(formValidationConfig.formSelector));
     formList.forEach((form) => {
         enableFormValidate(form, config);
     });
