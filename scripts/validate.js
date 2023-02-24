@@ -38,7 +38,7 @@ function toggleEnableButtonSubmit(form, config) {
     const buttonSubmit = form.querySelector(config.buttonSelector);
     const isFormValidity = form.checkValidity();
     buttonSubmit.disabled = !isFormValidity;
-    buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
+    buttonSubmit.classList.toggle(config.buttonDisabledClass, !isFormValidity);
 };
 enableValidation(formValidationConfig);
 function enableFormValidate(form, config) {
