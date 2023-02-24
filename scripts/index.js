@@ -20,7 +20,7 @@ const formAdd = document.forms.add;
 const inputAddName = formAdd.querySelector('.popup__input_type_title');
 const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 
-form.addEventListener('submit', (event) => {
+popupEditHead.addEventListener('submit', (event) => {
     event.preventDefault();
     profileName.textContent = popupName.value;
     profileAboutMe.textContent = popupAbout.value;
