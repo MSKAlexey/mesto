@@ -3,7 +3,6 @@ const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
 const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 const popupOpenButtonAddCard = document.querySelector('.profile__vector');
-const popupCloseButtonList = Array.from(document.querySelectorAll('.popup__close'));
 const popupName = popupEditHead.querySelector('.popup__input_type_name');
 const popupAbout = popupEditHead.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__title');
@@ -20,20 +19,7 @@ const template = document.querySelector('.template')
 const formAdd = document.forms.add;
 const inputAddName = formAdd.querySelector('.popup__input_type_title');
 const inputAddLink = formAdd.querySelector('.popup__input_type_link');
-popupCloseButtonList.forEach((closeButton) => {
-    closeButton.addEventListener('click', (event) => {
-        const popup = event.target.closest('.popup');
-        closePopup(popup);
-    });
-});
-const closePopupByClickOnOverlay = (event) => {
-    if (event.target === event.currentTarget) {
-        closePopup(event.currentTarget);
-    }  
-};
-popupEditHead.addEventListener('click', closePopupByClickOnOverlay);
-popupAddCard.addEventListener('click', closePopupByClickOnOverlay);
-popupImg.addEventListener('click', closePopupByClickOnOverlay);
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     profileName.textContent = popupName.value;
@@ -72,8 +58,6 @@ const submitFormAdd = (event) => {
     event.preventDefault();
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
     renderCards(cardsNameLink);
-    /* inputAddName.value = '';
-    inputAddLink.value = ''; */
     formAdd.reset();
     closePopup(popupAddCard);
 };
@@ -106,3 +90,15 @@ const closePopupByEscape = (event) => {
         closePopup(document.querySelector('.popup_opened'));
     };
 };
+// Это очень круто, спасибо за подсказку!) вроде так очевидно, но сам бы не догадался - это точно
+const popupsList = Array.from(document.querySelectorAll('.popup'));
+popupsList.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close')) {
+          closePopup(popup)
+        };
+    });
+});
