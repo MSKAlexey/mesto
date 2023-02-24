@@ -1,4 +1,3 @@
-const popup = document.querySelector('.popup');
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
@@ -18,7 +17,7 @@ const cardsContainer = document.querySelector('.cards');
 const template = document.querySelector('.template')
     .content
     .querySelector('.cards__item');
-const formAdd = popupAddCard.querySelector('.popup__form_type_add');
+const formAdd = document.forms.add;
 const inputAddName = formAdd.querySelector('.popup__input_type_title');
 const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 popupCloseButtonList.forEach((closeButton) => {
@@ -28,11 +27,10 @@ popupCloseButtonList.forEach((closeButton) => {
     });
 });
 const closePopupByClickOnOverlay = (event) => {
-    if (event.target !== event.currentTarget) {
-        return;
-    }
-    closePopup(document.querySelector('.popup_opened'));
-}
+    if (event.target === event.currentTarget) {
+        closePopup(event.currentTarget);
+    }  
+};
 popupEditHead.addEventListener('click', closePopupByClickOnOverlay);
 popupAddCard.addEventListener('click', closePopupByClickOnOverlay);
 popupImg.addEventListener('click', closePopupByClickOnOverlay);
