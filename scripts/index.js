@@ -74,8 +74,9 @@ const submitFormAdd = (event) => {
     event.preventDefault();
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
     renderCards(cardsNameLink);
-    inputAddName.value = '';
-    inputAddLink.value = '';
+    /* inputAddName.value = '';
+    inputAddLink.value = ''; */
+    formAdd.reset();
     closePopup(popupAddCard);
 };
 formAdd.addEventListener('submit', submitFormAdd);
