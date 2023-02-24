@@ -7,7 +7,6 @@ const formValidationConfig = {
 };
 const formList = Array.from(document.querySelectorAll(formValidationConfig.formSelector));
 const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
-
 const stopWindowResetOnSubmit = (event) => {
     event.preventDefault();
 };
@@ -16,9 +15,7 @@ function enableValidation(config) {
         enableFormValidate(form, config);
     });
 };
-
 enableValidation(formValidationConfig);
-
 function enableFormValidate(form, config) {
     form.addEventListener('submit', stopWindowResetOnSubmit);
     form.addEventListener('input', () => {
@@ -26,19 +23,18 @@ function enableFormValidate(form, config) {
     });
     addInputListners(form, config);
     toggleEnableButtonSubmit(form, config);
-}
-
+};
 function handleFormInput(event, config) {
     const input = event.target;
     const inputId = input.id;
     const errorElement = document.querySelector(`#${inputId}-error`);
     if (input.validity.valid) {
-        input.classList.remove(config.errorClass)
+        input.classList.remove(config.errorClass);
         errorElement.textContent = '';
     } else {
-        input.classList.add(config.errorClass)
+        input.classList.add(config.errorClass);
         errorElement.textContent = input.validationMessage;
-    }
+    };
 };
 function toggleEnableButtonSubmit(form, config) {
     const buttonSubmit = form.querySelector(config.buttonSelector);
