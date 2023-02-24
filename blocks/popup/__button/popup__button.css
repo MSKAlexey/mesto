@@ -15,7 +15,7 @@
 }
 
 .popup__button_disabled {
-    background: rgba(112, 126, 144, 0.267);
+    opacity: 0.2;
 }
 
 .popup__button:hover {
