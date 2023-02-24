@@ -42,7 +42,7 @@ function toggleEnableButtonSubmit(form, config) {
     buttonSubmit.disabled = !isFormValidity;
     buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
 };
-function addInputListners(form, config) {
+function addInputListners(config) {
     inputList.forEach((item) => {
         item.addEventListener('input', (event) => {
             handleFormInput(event, config)
