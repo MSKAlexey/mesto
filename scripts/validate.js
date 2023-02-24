@@ -5,7 +5,7 @@ const formValidationConfig = {
     buttonSelector: '.popup__button',
     buttonDisabledClass: 'popup__button_disabled',
 };
-const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
+
 const stopWindowResetOnSubmit = (event) => {
     event.preventDefault();
 };
@@ -28,6 +28,7 @@ function handleFormInput(event, config) {
     };
 };
 function addInputListners(config) {
+    const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
     inputList.forEach((item) => {
         item.addEventListener('input', (event) => {
             handleFormInput(event, config)
