@@ -72,7 +72,7 @@ const createCard = (cardsNameLink) => {
     popupOpenButtonImg.alt = cardsNameLink.name;
 
     popupOpenButtonImg.addEventListener('click', () => {
-        popupImg.classList.add('popup_opened');
+        openPopup(popupImg)
         popupImage.src = popupOpenButtonImg.src;
         popupImgName.textContent = cardsNameLink.name;
         popupImage.alt = cardsNameLink.name;

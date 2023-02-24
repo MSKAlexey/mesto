@@ -6,7 +6,6 @@ const formValidationConfig = {
     buttonDisabledClass: 'popup__button_disabled',
 };
 const formList = Array.from(document.querySelectorAll(formValidationConfig.formSelector));
-console.log(formList)
 const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
 
 const stopWindowResetOnSubmit = (event) => {
