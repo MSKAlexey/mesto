@@ -18,7 +18,7 @@ const cardsContainer = document.querySelector('.cards');
 const template = document.querySelector('.template')
     .content
     .querySelector('.cards__item');
-const formAdd = popupAddCard.querySelector('.form_add');
+const formAdd = popupAddCard.querySelector('.popup__form_type_add');
 const inputAddName = formAdd.querySelector('.popup__input_type_title');
 const inputAddLink = formAdd.querySelector('.popup__input_type_link');
 popupCloseButtonList.forEach((closeButton) => {
