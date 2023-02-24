@@ -15,15 +15,6 @@ function enableValidation(config) {
         enableFormValidate(form, config);
     });
 };
-enableValidation(formValidationConfig);
-function enableFormValidate(form, config) {
-    form.addEventListener('submit', stopWindowResetOnSubmit);
-    form.addEventListener('input', () => {
-        toggleEnableButtonSubmit(form, config);
-    });
-    addInputListners(form, config);
-    toggleEnableButtonSubmit(form, config);
-};
 function handleFormInput(event, config) {
     const input = event.target;
     const inputId = input.id;
@@ -36,16 +27,25 @@ function handleFormInput(event, config) {
         errorElement.textContent = input.validationMessage;
     };
 };
-function toggleEnableButtonSubmit(form, config) {
-    const buttonSubmit = form.querySelector(config.buttonSelector);
-    const isFormValidity = form.checkValidity();
-    buttonSubmit.disabled = !isFormValidity;
-    buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
-};
 function addInputListners(config) {
     inputList.forEach((item) => {
         item.addEventListener('input', (event) => {
             handleFormInput(event, config)
         });
     });
+};
+function toggleEnableButtonSubmit(form, config) {
+    const buttonSubmit = form.querySelector(config.buttonSelector);
+    const isFormValidity = form.checkValidity();
+    buttonSubmit.disabled = !isFormValidity;
+    buttonSubmit.classList.toggle('popup__button_disabled', !isFormValidity);
+};
+enableValidation(formValidationConfig);
+function enableFormValidate(form, config) {
+    form.addEventListener('submit', stopWindowResetOnSubmit);
+    form.addEventListener('input', () => {
+        toggleEnableButtonSubmit(form, config);
+    });
+    addInputListners(form, config);
+    toggleEnableButtonSubmit(form, config);
 };
