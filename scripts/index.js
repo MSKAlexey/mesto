@@ -18,11 +18,11 @@ const template = document.querySelector('.template')
     .content
     .querySelector('.cards__item');
 
-const formProfileEdit = document.forms.form;
-const formAddCard = document.forms.add;
+const profileForm = document.forms.form;
+const cardForm = document.forms.add;
 
-const inputAddName = formAddCard.querySelector('.popup__input_type_title');
-const inputAddLink = formAddCard.querySelector('.popup__input_type_link');
+const inputAddName = cardForm.querySelector('.popup__input_type_title');
+const inputAddLink = cardForm.querySelector('.popup__input_type_link');
 
 popupEditHead.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -62,10 +62,10 @@ const submitFormAdd = (event) => {
     event.preventDefault();
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
     renderCards(cardsNameLink);
-    formAddCard.reset();
+    cardForm.reset();
     closePopup(popupAddCard);
 };
-formAddCard.addEventListener('submit', submitFormAdd);
+cardForm.addEventListener('submit', submitFormAdd);
 popupOpenButtonEditHead.addEventListener('click', () => {
     const buttonSubmit = form.querySelector(formValidationConfig.buttonSelector);
     buttonSubmit.disabled = true;
@@ -75,7 +75,7 @@ popupOpenButtonEditHead.addEventListener('click', () => {
     openPopup(popupEditHead);
 });
 popupOpenButtonAddCard.addEventListener('click', () => {
-    const buttonSubmit = formProfileEdit.querySelector(formValidationConfig.buttonSelector);
+    const buttonSubmit = profileForm.querySelector(formValidationConfig.buttonSelector);
     buttonSubmit.disabled = true;
     buttonSubmit.classList.add('popup__button_disabled');
     openPopup(popupAddCard);
