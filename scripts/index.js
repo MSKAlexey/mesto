@@ -21,7 +21,6 @@ const template = document.querySelector('.template')
 const formProfileEdit = document.forms.form;
 const formAddCard = document.forms.add;
 
-console.log(formProfileEdit)
 const inputAddName = formAddCard.querySelector('.popup__input_type_title');
 const inputAddLink = formAddCard.querySelector('.popup__input_type_link');
 
@@ -77,7 +76,6 @@ popupOpenButtonEditHead.addEventListener('click', () => {
 });
 popupOpenButtonAddCard.addEventListener('click', () => {
     const buttonSubmit = formProfileEdit.querySelector(formValidationConfig.buttonSelector);
-    console.log(form)
     buttonSubmit.disabled = true;
     buttonSubmit.classList.add('popup__button_disabled');
     openPopup(popupAddCard);
