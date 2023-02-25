@@ -27,8 +27,8 @@ function handleFormInput(event, config) {
         errorElement.textContent = input.validationMessage;
     };
 };
-function addInputListners(config) {
-    const inputList = Array.from(document.querySelectorAll(formValidationConfig.inputSelector));
+function addInputListners(form, config) {
+    const inputList = Array.from(form.querySelectorAll(formValidationConfig.inputSelector));
     inputList.forEach((item) => {
         item.addEventListener('input', (event) => {
             handleFormInput(event, config)
