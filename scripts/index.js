@@ -67,6 +67,9 @@ const submitFormAdd = (event) => {
 };
 cardForm.addEventListener('submit', submitFormAdd);
 popupOpenButtonEditHead.addEventListener('click', () => {
+    const buttonSubmit = profileForm.querySelector(formValidationConfig.buttonSelector);
+    buttonSubmit.disabled = true;
+    buttonSubmit.classList.add('popup__button_disabled');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
     openPopup(popupEditHead);
