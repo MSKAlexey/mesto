@@ -61,8 +61,8 @@ initialCards.forEach((elm) => {
 const submitFormAdd = (event) => {
     event.preventDefault();
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
-    renderCards(cardsNameLink);
     cardForm.reset();
+    renderCards(cardsNameLink);    
     closePopup(popupAddCard);
 };
 cardForm.addEventListener('submit', submitFormAdd);
@@ -72,6 +72,7 @@ popupOpenButtonEditHead.addEventListener('click', () => {
     buttonSubmit.classList.add('popup__button_disabled');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
+   
     openPopup(popupEditHead);
 });
 popupOpenButtonAddCard.addEventListener('click', () => {
