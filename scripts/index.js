@@ -46,8 +46,8 @@ const createCard = (cardsNameLink) => {
     likeBtn.addEventListener('click', (event) => {
         event.target.classList.toggle('cards__icon_active');
     });
-    const trashButtonDelete = card.querySelector('.cards__trash');
-    trashButtonDelete.addEventListener('click', () => {
+    const trashButton = card.querySelector('.cards__trash');
+    trashButton.addEventListener('click', () => {
         card.remove();
     });
     return card;
@@ -67,17 +67,11 @@ const submitFormAdd = (event) => {
 };
 cardForm.addEventListener('submit', submitFormAdd);
 popupOpenButtonEditHead.addEventListener('click', () => {
-    const buttonSubmit = form.querySelector(formValidationConfig.buttonSelector);
-    buttonSubmit.disabled = true;
-    buttonSubmit.classList.add('popup__button_disabled');
     popupName.value = profileName.textContent;
     popupAbout.value = profileAboutMe.textContent;
     openPopup(popupEditHead);
 });
 popupOpenButtonAddCard.addEventListener('click', () => {
-    const buttonSubmit = profileForm.querySelector(formValidationConfig.buttonSelector);
-    buttonSubmit.disabled = true;
-    buttonSubmit.classList.add('popup__button_disabled');
     openPopup(popupAddCard);
 });
 // открытие/закрытие popup
@@ -94,7 +88,6 @@ const closePopupByEscape = (event) => {
         closePopup(document.querySelector('.popup_opened'));
     };
 };
-// Это очень круто, спасибо за подсказку!) вроде так очевидно, но сам бы не догадался - это точно
 const popupsList = Array.from(document.querySelectorAll('.popup'));
 popupsList.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
