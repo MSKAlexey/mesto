@@ -1,6 +1,7 @@
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
+
 const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 const popupOpenButtonAddCard = document.querySelector('.profile__vector');
 const popupName = popupEditHead.querySelector('.popup__input_type_name');
@@ -16,9 +17,13 @@ const cardsContainer = document.querySelector('.cards');
 const template = document.querySelector('.template')
     .content
     .querySelector('.cards__item');
-const formAdd = document.forms.add;
-const inputAddName = formAdd.querySelector('.popup__input_type_title');
-const inputAddLink = formAdd.querySelector('.popup__input_type_link');
+
+const formProfileEdit = document.forms.form;
+const formAddCard = document.forms.add;
+
+console.log(formProfileEdit)
+const inputAddName = formAddCard.querySelector('.popup__input_type_title');
+const inputAddLink = formAddCard.querySelector('.popup__input_type_link');
 
 popupEditHead.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -58,10 +63,10 @@ const submitFormAdd = (event) => {
     event.preventDefault();
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
     renderCards(cardsNameLink);
-    formAdd.reset();
+    formAddCard.reset();
     closePopup(popupAddCard);
 };
-formAdd.addEventListener('submit', submitFormAdd);
+formAddCard.addEventListener('submit', submitFormAdd);
 popupOpenButtonEditHead.addEventListener('click', () => {
     const buttonSubmit = form.querySelector(formValidationConfig.buttonSelector);
     buttonSubmit.disabled = true;
@@ -71,7 +76,8 @@ popupOpenButtonEditHead.addEventListener('click', () => {
     openPopup(popupEditHead);
 });
 popupOpenButtonAddCard.addEventListener('click', () => {
-    const buttonSubmit = form.querySelector(formValidationConfig.buttonSelector);
+    const buttonSubmit = formProfileEdit.querySelector(formValidationConfig.buttonSelector);
+    console.log(form)
     buttonSubmit.disabled = true;
     buttonSubmit.classList.add('popup__button_disabled');
     openPopup(popupAddCard);
@@ -98,7 +104,7 @@ popupsList.forEach((popup) => {
             closePopup(popup)
         }
         if (evt.target.classList.contains('popup__close')) {
-          closePopup(popup)
+            closePopup(popup)
         };
     });
 });
