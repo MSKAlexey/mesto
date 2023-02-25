@@ -5,7 +5,6 @@ const formValidationConfig = {
     buttonSelector: '.popup__button',
     buttonDisabledClass: 'popup__button_disabled',
 };
-
 const stopWindowResetOnSubmit = (event) => {
     event.preventDefault();
 };
