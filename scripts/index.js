@@ -1,4 +1,7 @@
-const popupEditHead = document.querySelector('.popup_edit');
+import initialCards from "./cards.js";
+import Card from "./Card.js";
+
+/* const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
 
@@ -102,4 +105,4 @@ popupsList.forEach((popup) => {
             closePopup(popup)
         };
     });
-});
+}); */
