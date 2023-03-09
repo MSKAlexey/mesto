@@ -1,7 +1,19 @@
 import initialCards from "./cards.js";
 import Card from "./Card.js";
 
-/* const popupEditHead = document.querySelector('.popup_edit');
+// выбираем контейнер в который будем вставлять template
+const cardsContainer = document.querySelector('.cards');
+// выбираем template шаблон
+const template = document.querySelector('.template')
+  .content
+  .querySelector('.cards__item');
+
+const card = new Card(initialCards);
+// console.log(card._items)
+card.render(cardsContainer, template);
+
+/* 
+const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
 const popupImg = document.querySelector('.popup_img');
 
@@ -65,7 +77,7 @@ const submitFormAdd = (event) => {
     event.preventDefault();
     const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
     cardForm.reset();
-    renderCards(cardsNameLink);    
+    renderCards(cardsNameLink);
     closePopup(popupAddCard);
 };
 cardForm.addEventListener('submit', submitFormAdd);
@@ -105,4 +117,5 @@ popupsList.forEach((popup) => {
             closePopup(popup)
         };
     });
-}); */
+});
+*/
