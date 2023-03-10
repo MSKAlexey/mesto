@@ -1,16 +1,11 @@
 import initialCards from "./cards.js";
-import Card from "./Card.js";
+import CardsList from "./CardsList.js";
 
-// выбираем контейнер в который будем вставлять template
-const cardsContainer = document.querySelector('.cards');
-// выбираем template шаблон
-const template = document.querySelector('.template')
-  .content
-  .querySelector('.cards__item');
+const container = document.querySelector('#app');
 
-const card = new Card(initialCards);
-// console.log(card._items)
-card.render(cardsContainer, template);
+const cardsList = new CardsList(initialCards);
+
+cardsList.render(container);
 
 /* 
 const popupEditHead = document.querySelector('.popup_edit');
