@@ -10,47 +10,32 @@
 </head>
 
 <body class="page">
-
   <div class="page__container">
-
     <header class="header">
       <img class="c" src="./images/logo.svg" alt="Надпись на латинице: Место и Россия">
     </header>
-
     <main class="main">
-
       <section class="profile">
-
         <img class="profile__image" src="./images/profile-image.jpg" alt="Какой то улыбающиися мужик в дурацкой шапке">
-
         <div class="profile__content">
           <div class="profile__name-buttom">
-
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__popup-open opacity cursor"></button>
-
           </div>
-
           <p class="profile__subtitle">Исследователь океана</p>
-
         </div>
-
         <button type="button" class="profile__vector opacity cursor"></button>
-
       </section>
-
       <section class="places">
-        <div id="app"></div>
+        <div id="app">
+          <!-- Контейнер для добавления карточек -->
+        </div>
       </section>
-
     </main>
-
     <footer class=" footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-
   </div>
-
   <!-- popup -->
   <div class="popup popup_edit">
     <div class="popup__container">
@@ -95,7 +80,7 @@
     <ul class="cards"></ul>
   </template>
 
-  <template class="template" id="template-form-card">
+<!--   <template class="template" id="template-form-card">
     <li class="cards__item">
       <button type="button" class="cards__trash cursor"></button>
       <img src="#" alt="" class="cards__image">
@@ -104,9 +89,9 @@
         <button type="button" class="cards__icon cursor"></button>
       </div>
     </li>
-  </template>
+  </template> -->
 
-  <template class="template" id="templatetemplate-item-card">
+  <template class="template" id="template-item-card">
     <li class="cards__item">
       <button type="button" class="cards__trash cursor"></button>
       <img src="#" alt="" class="cards__image">

@@ -1,9 +1,13 @@
 import initialCards from "./cards.js";
 import CardsList from "./CardsList.js";
+import CardsListItem from "./CardsListItem.js";
 
 const container = document.querySelector('#app');
 
-const cardsList = new CardsList(initialCards);
+const cardsList = new CardsList(initialCards, CardsListItem);
+const createCardsListItem = new CardsListItem();
+// console.log(CardsList._template);
+console.log(CardsListItem._template);
 
 cardsList.render(container);
 
