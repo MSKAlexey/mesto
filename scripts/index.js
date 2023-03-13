@@ -32,7 +32,10 @@ const submitFormAdd = (event) => {
   event.preventDefault();
   const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
   cardForm.reset();
-  renderCards(cardsNameLink);
+  const card = new Card(cardsNameLink, '.template');
+  const cardElement = card.generateCard(openPopup);
+  // Добавляем в DOM
+  document.querySelector('.cards').prepend(cardElement);
   closePopup(popupAddCard);
 };
 cardForm.addEventListener('submit', submitFormAdd);
