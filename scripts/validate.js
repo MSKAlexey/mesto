@@ -54,3 +54,5 @@ function enableFormValidate(form, config) {
         }, 0);
     });
 };
+
+export default formValidationConfig;

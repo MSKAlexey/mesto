@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import initialCards from "./cards.js";
+import formValidationConfig from "./validate.js";
 
 
 
@@ -69,6 +70,7 @@ initialCards.forEach((item) => {
   // Добавляем в DOM
   document.querySelector('.cards').prepend(cardElement);
 });
+
 const submitFormAdd = (event) => {
   event.preventDefault();
   const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
