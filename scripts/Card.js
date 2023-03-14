@@ -45,7 +45,6 @@ class Card {
     this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
       event.target.classList.toggle('cards__icon_active');
     });
-
   }
 
 }
