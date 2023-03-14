@@ -47,7 +47,7 @@ class FormValidation {
   enableValidation(config) {
     const formList = Array.from(document.querySelectorAll(this._formValidationConfig.formSelector));
     formList.forEach((form) => {
-      enableFormValidate(form, config);
+      _enableFormValidate(form, config);
     });
   };
 
