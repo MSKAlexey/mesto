@@ -1,6 +1,8 @@
-import Card from "./Card.js";
 import initialCards from "./cards.js";
-import formValidationConfig from "./validate.js";
+import formValidationConfig from "./formValidationConfig.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+// import formValidationConfig from "./validate.js";
 
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
@@ -38,17 +40,22 @@ const submitFormAdd = (event) => {
   document.querySelector('.cards').prepend(cardElement);
   closePopup(popupAddCard);
 };
+
 cardForm.addEventListener('submit', submitFormAdd);
+
 popupOpenButtonEditHead.addEventListener('click', () => {
   const buttonSubmit = profileForm.querySelector(formValidationConfig.buttonSelector);
   buttonSubmit.disabled = true;
   buttonSubmit.classList.add('popup__button_disabled');
   popupName.value = profileName.textContent;
   popupAbout.value = profileAboutMe.textContent;
-
   openPopup(popupEditHead);
 });
+
 popupOpenButtonAddCard.addEventListener('click', () => {
+  // const buttonSubmit = cardForm.querySelector(formValidationConfig.buttonSelector);
+  // buttonSubmit.disabled = true;
+  // buttonSubmit.classList.add('popup__button_disabled');
   openPopup(popupAddCard);
 });
 // открытие/закрытие popup
@@ -83,3 +90,8 @@ initialCards.forEach((item) => {
   // Добавляем в DOM
   document.querySelector('.cards').prepend(cardElement);
 });
+
+const formValidatorEditHead = new FormValidator(formValidationConfig, popupEditHead);
+formValidatorEditHead.enableValidation(popupEditHead);
+const formValidatorAddCard = new FormValidator(formValidationConfig, popupAddCard);
+formValidatorAddCard.enableValidation(popupAddCard);
