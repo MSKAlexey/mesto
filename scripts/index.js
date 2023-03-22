@@ -2,11 +2,9 @@ import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-// import formValidationConfig from "./validate.js";
 
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
-
 
 const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 const popupOpenButtonAddCard = document.querySelector('.profile__vector');
@@ -15,7 +13,6 @@ const popupAbout = popupEditHead.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
 const popupLink = popupAddCard.querySelector('.popup__input_type_link');
-
 
 const profileForm = document.forms.form;
 const cardForm = document.forms.add;
@@ -53,9 +50,6 @@ popupOpenButtonEditHead.addEventListener('click', () => {
 });
 
 popupOpenButtonAddCard.addEventListener('click', () => {
-  // const buttonSubmit = cardForm.querySelector(formValidationConfig.buttonSelector);
-  // buttonSubmit.disabled = true;
-  // buttonSubmit.classList.add('popup__button_disabled');
   openPopup(popupAddCard);
 });
 // открытие/закрытие popup
@@ -87,11 +81,10 @@ popupsList.forEach((popup) => {
 initialCards.forEach((item) => {
   const card = new Card(item, '.template');
   const cardElement = card.generateCard(openPopup);
-  // Добавляем в DOM
   document.querySelector('.cards').prepend(cardElement);
 });
 
 const formValidatorEditHead = new FormValidator(formValidationConfig, popupEditHead);
-formValidatorEditHead.enableValidation(popupEditHead);
+formValidatorEditHead.enableValidation();
 const formValidatorAddCard = new FormValidator(formValidationConfig, popupAddCard);
-formValidatorAddCard.enableValidation(popupAddCard);
+formValidatorAddCard.enableValidation();
