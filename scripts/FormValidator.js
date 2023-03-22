@@ -10,7 +10,6 @@ class FormValidator {
   }
 
   _handleFormInput(item) {
-    // console.log(item)
     const inputId = item.id;
     console.log(inputId)
     const errorElement = document.querySelector(`#${inputId}-error`);
@@ -24,11 +23,8 @@ class FormValidator {
   };
 
   _toggleEnableButtonSubmit() {
-    // console.log(this._form)
     const buttonSubmit = this._form.querySelector(this._buttonSelector);
-    // console.log(buttonSubmit)
-    const isFormValidity = this._formSelector.checkValidity();
-    // console.log(isFormValidity)
+    const isFormValidity = this._form.querySelector(this._formSelector).checkValidity();
     buttonSubmit.disabled = !isFormValidity;
     buttonSubmit.classList.toggle(this._buttonDisabledClass, !isFormValidity);
   };
