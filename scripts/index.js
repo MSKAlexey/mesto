@@ -5,18 +5,14 @@ import FormValidator from "./FormValidator.js";
 
 const popupEditHead = document.querySelector('.popup_edit');
 const popupAddCard = document.querySelector('.popup_add');
-
 const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 const popupOpenButtonAddCard = document.querySelector('.profile__vector');
 const popupName = popupEditHead.querySelector('.popup__input_type_name');
 const popupAbout = popupEditHead.querySelector('.popup__input_type_about');
 const profileName = document.querySelector('.profile__title');
 const profileAboutMe = document.querySelector('.profile__subtitle');
-const popupLink = popupAddCard.querySelector('.popup__input_type_link');
-
 const profileForm = document.forms.form;
 const cardForm = document.forms.add;
-
 const inputAddName = cardForm.querySelector('.popup__input_type_title');
 const inputAddLink = cardForm.querySelector('.popup__input_type_link');
 
@@ -84,7 +80,7 @@ initialCards.forEach((item) => {
   document.querySelector('.cards').prepend(cardElement);
 });
 
-const formValidatorEditHead = new FormValidator(formValidationConfig, popupEditHead);
+const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
 formValidatorEditHead.enableValidation();
-const formValidatorAddCard = new FormValidator(formValidationConfig, popupAddCard);
+const formValidatorAddCard = new FormValidator(formValidationConfig, cardForm);
 formValidatorAddCard.enableValidation();

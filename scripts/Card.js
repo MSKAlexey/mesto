@@ -4,7 +4,6 @@ class Card {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-
   }
 
   _getTemplate() {
@@ -13,7 +12,6 @@ class Card {
       .content
       .querySelector('.cards__item')
       .cloneNode(true);
-
     return cardElement;
   }
 
@@ -45,9 +43,7 @@ class Card {
     this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
       event.target.classList.toggle('cards__icon_active');
     });
-
   }
-
 }
 
 export default Card;

@@ -2,7 +2,6 @@ class FormValidator {
   constructor(config, form) {
     this._config = config;
     this._form = form;
-    this._formSelector = config.formSelector;
     this._buttonSelector = config.buttonSelector;
     this._buttonDisabledClass = config.buttonDisabledClass;
     this._inputSelector = config.inputSelector;
@@ -23,7 +22,7 @@ class FormValidator {
 
   _toggleEnableButtonSubmit() {
     const buttonSubmit = this._form.querySelector(this._buttonSelector);
-    const isFormValidity = this._form.querySelector(this._formSelector).checkValidity();
+    const isFormValidity = this._form.checkValidity();
     buttonSubmit.disabled = !isFormValidity;
     buttonSubmit.classList.toggle(this._buttonDisabledClass, !isFormValidity);
   };
