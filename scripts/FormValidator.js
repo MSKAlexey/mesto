@@ -11,7 +11,6 @@ class FormValidator {
 
   _handleFormInput(item) {
     const inputId = item.id;
-    console.log(inputId)
     const errorElement = document.querySelector(`#${inputId}-error`);
     if (item.validity.valid) {
       item.classList.remove(this._errorClass);
