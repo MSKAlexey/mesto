@@ -1,20 +1,22 @@
+import {
+  popupEditHead,
+  popupAddCard,
+  popupOpenButtonEditHead,
+  popupOpenButtonAddCard,
+  popupName,
+  popupAbout,
+  profileName,
+  profileAboutMe,
+  profileForm,
+  cardForm,
+  inputAddName,
+  inputAddLink,
+  popupsList,
+} from "./constants.js";
 import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-
-const popupEditHead = document.querySelector('.popup_edit');
-const popupAddCard = document.querySelector('.popup_add');
-const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
-const popupOpenButtonAddCard = document.querySelector('.profile__vector');
-const popupName = popupEditHead.querySelector('.popup__input_type_name');
-const popupAbout = popupEditHead.querySelector('.popup__input_type_about');
-const profileName = document.querySelector('.profile__title');
-const profileAboutMe = document.querySelector('.profile__subtitle');
-const profileForm = document.forms.form;
-const cardForm = document.forms.add;
-const inputAddName = cardForm.querySelector('.popup__input_type_title');
-const inputAddLink = cardForm.querySelector('.popup__input_type_link');
 
 popupEditHead.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -62,7 +64,7 @@ const closePopupByEscape = (event) => {
     closePopup(document.querySelector('.popup_opened'));
   };
 };
-const popupsList = Array.from(document.querySelectorAll('.popup'));
+
 popupsList.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
