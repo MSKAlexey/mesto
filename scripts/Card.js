@@ -1,9 +1,11 @@
-
+import { popupImage, popupImg, popupImgName } from "./constants.js";
 class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._element = this._getTemplate();
+    this._cardsImage = this._element.querySelector('.cards__image');
   }
 
   _getTemplate() {
@@ -16,32 +18,34 @@ class Card {
   }
 
   generateCard(openPopup) {
-    this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.cards__image').src = this._link;
-    this._element.querySelector('.cards__image').alt = this._name;
+    this._cardsImage.src = this._link;
+    this._cardsImage.alt = this._name;
     this._element.querySelector('.cards__title').textContent = this._name;
 
-    const popupImage = document.querySelector('.popup__image');
-    const popupImg = document.querySelector('.popup_img');
-    const popupImgName = popupImg.querySelector('.popup__name');
-
-    this._element.querySelector('.cards__image').addEventListener('click', () => {
+    this._cardsImage.addEventListener('click', () => {
       openPopup(popupImg);
       popupImage.src = this._link;
       popupImgName.textContent = this._name;
       popupImage.alt = this._name;
     });
-
     return this._element;
+  }
+
+  removeElement() {
+    this._element.remove();
+  }
+
+  toggleLikeButton(event) {
+    event.target.classList.toggle('cards__icon_active');
   }
 
   _setEventListeners() {
     this._element.querySelector('.cards__trash').addEventListener('click', () => {
-      this._element.remove();
+      this.removeElement();
     });
     this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
-      event.target.classList.toggle('cards__icon_active');
+      this.toggleLikeButton(event);
     });
   }
 }
