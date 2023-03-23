@@ -6,6 +6,7 @@ class Card {
     this._templateSelector = templateSelector;
     this._element = this._getTemplate();
     this._cardsImage = this._element.querySelector('.cards__image');
+    this._cardsTitle = this._element.querySelector('.cards__title');
   }
 
   _getTemplate() {
@@ -21,7 +22,7 @@ class Card {
     this._setEventListeners();
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
-    this._element.querySelector('.cards__title').textContent = this._name;
+    this._cardsTitle.textContent = this._name;
 
     this._cardsImage.addEventListener('click', () => {
       openPopup(popupImg);
