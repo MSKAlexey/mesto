@@ -11,8 +11,7 @@ class FormValidator {
   }
 
   _handleFormInput(item) {
-    const inputId = item.id;
-    const errorElement = document.querySelector(`#${inputId}-error`);
+    const errorElement = document.querySelector(`#${item.id}-error`);
     if (item.validity.valid) {
       item.classList.remove(this._errorClass);
       errorElement.textContent = '';
@@ -23,9 +22,8 @@ class FormValidator {
   };
 
   _toggleEnableButtonSubmit() {
-    const isFormValidity = this._form.checkValidity();
-    this._submitButton.disabled = !isFormValidity;
-    this._submitButton.classList.toggle(this._buttonDisabledClass, !isFormValidity);
+    this._submitButton.disabled = !this._form.checkValidity();
+    this._submitButton.classList.toggle(this._buttonDisabledClass, !this._form.checkValidity());
   };
 
   _addInputListners() {
@@ -34,6 +32,11 @@ class FormValidator {
         this._handleFormInput(item);
       });
     });
+  };
+
+  disabledbuttonSubmit() {
+    this._submitButton.disabled = true;
+    this._submitButton.classList.add(this._buttonDisabledClass);
   };
 
   enableValidation() {
