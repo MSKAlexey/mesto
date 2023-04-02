@@ -1,4 +1,8 @@
-import { popupImage, popupImg, popupImgName } from "./constants.js";
+import {
+  popupImage,
+  popupImg,
+  popupImgName
+} from "./constants.js";
 class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
