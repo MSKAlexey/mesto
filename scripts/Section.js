@@ -1,15 +1,20 @@
 class Section {
-  constructor({ items, renderer }, cardsContainer) {
-    this._items = items;
-    console.log(this._items)
+  constructor({ renderer }, cardsContainer) {
     this._renderer = renderer;
     this._cardsContainer = cardsContainer;
+    console.log(this._cardsContainer)
+    console.log(this._renderer)
   }
 
-  addItem() {
-    this._items.forEach((item) => {
-      this._cardsContainer.prepend(generateCardToPage(item));
+  renderItem(items) {
+    this._items = items;
+    this._items.forEach(item => {
+      this._renderer(item);
     });
+  }
+
+  addItem(element) {
+    this._cardsContainer.prepend(element);
   };
 }
 

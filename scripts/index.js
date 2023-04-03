@@ -17,6 +17,7 @@ import {
 import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
 import Card from "./Card.js";
+import Section from "./Section.js";
 import Popup from "./Popup.js";
 import FormValidator from "./FormValidator.js";
 
@@ -47,26 +48,10 @@ popupOpenButtonAddCard.addEventListener('click', () => {
 // создание карточек
 
 
-const generateCardToPage = (item) => {
+function generateCardToPage(item) {
   const card = new Card(item, '.template');
   return card.generateCard(openPopupImg);
 };
-
-const section = new Selection(
-  {
-    initialCards,
-    generateCardToPage
-  }, cardsContainer);
-section.addItem();
-
-// initialCards.forEach((item) => {
-//   cardsContainer.prepend(generateCardToPage(item));
-// });
-
-
-
-
-
 
 
 const submitFormAdd = (event) => {
@@ -78,6 +63,11 @@ const submitFormAdd = (event) => {
 };
 
 cardForm.addEventListener('submit', submitFormAdd);
+
+const addCard = new Section({ renderer: (item) => {
+  return generateCardToPage(item);
+}}, cardsContainer);
+addCard.renderItem(initialCards);
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
