@@ -22,14 +22,14 @@ class Card {
     return cardElement;
   }
 
-  generateCard(openPopup) {
+  generateCard(popup) {
     this._setEventListeners();
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
 
     this._cardsImage.addEventListener('click', () => {
-      openPopup(popupImg);
+      popup.open(popupImg);
       popupImage.src = this._link;
       popupImgName.textContent = this._name;
       popupImage.alt = this._name;

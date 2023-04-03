@@ -11,12 +11,13 @@ import {
   cardForm,
   inputAddName,
   inputAddLink,
-  popupsList,
+  popupImg,
   cardsContainer,
 } from "./constants.js";
 import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
 import Card from "./Card.js";
+import Popup from "./Popup.js";
 import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
@@ -24,52 +25,31 @@ popupEditHead.addEventListener('submit', (event) => {
   event.preventDefault();
   profileName.textContent = popupName.value;
   profileAboutMe.textContent = popupAbout.value;
-  closePopup(popupEditHead);
+  openPopupEditHead.close();
 });
 
 popupOpenButtonEditHead.addEventListener('click', () => {
   formValidatorEditHead.disabledbuttonSubmit();
   popupName.value = profileName.textContent;
   popupAbout.value = profileAboutMe.textContent;
-  openPopup(popupEditHead);
+  openPopupEditHead.open();
 });
 
 // открытие/закрытие popup
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupByEscape);
-};
+
+const openPopupEditHead = new Popup(popupEditHead);
+const openPopupAddCard = new Popup(popupAddCard);
+const openPopupImg = new Popup(popupImg);
+
 
 popupOpenButtonAddCard.addEventListener('click', () => {
-  openPopup(popupAddCard);
-});
-
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupByEscape);
-};
-
-const closePopupByEscape = (event) => {
-  if (event.key === 'Escape') {
-    closePopup(document.querySelector('.popup_opened'));
-  };
-};
-
-popupsList.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
-      closePopup(popup)
-    }
-    if (evt.target.classList.contains('popup__close')) {
-      closePopup(popup)
-    };
-  });
+  openPopupAddCard.open();
 });
 
 // создание карточек
 const generateCardToPage = (item) => {
   const card = new Card(item, '.template');
-  return card.generateCard(openPopup);
+  return card.generateCard(openPopupImg);
 };
 
 initialCards.forEach((item) => {
@@ -81,7 +61,7 @@ const submitFormAdd = (event) => {
   const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
   cardForm.reset();
   cardsContainer.prepend(generateCardToPage(cardsNameLink));
-  closePopup(popupAddCard);
+  openPopupAddCard.close();
 };
 
 cardForm.addEventListener('submit', submitFormAdd);
