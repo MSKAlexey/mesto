@@ -1,7 +1,6 @@
 class Popup {
   constructor(popup) {
     this._popup = popup;
-    console.log(this._popup)
   }
 
   open = () => {
