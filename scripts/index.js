@@ -45,14 +45,29 @@ popupOpenButtonAddCard.addEventListener('click', () => {
 });
 
 // создание карточек
+
+
 const generateCardToPage = (item) => {
   const card = new Card(item, '.template');
   return card.generateCard(openPopupImg);
 };
 
-initialCards.forEach((item) => {
-  cardsContainer.prepend(generateCardToPage(item));
-});
+const section = new Selection(
+  {
+    initialCards,
+    generateCardToPage
+  }, cardsContainer);
+section.addItem();
+
+// initialCards.forEach((item) => {
+//   cardsContainer.prepend(generateCardToPage(item));
+// });
+
+
+
+
+
+
 
 const submitFormAdd = (event) => {
   event.preventDefault();
