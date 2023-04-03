@@ -36,11 +36,9 @@ popupOpenButtonEditHead.addEventListener('click', () => {
 });
 
 // открытие/закрытие popup
-
 const openPopupEditHead = new Popup(popupEditHead);
 const openPopupAddCard = new Popup(popupAddCard);
 const openPopupImg = new Popup(popupImg);
-
 
 popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();
