@@ -46,13 +46,10 @@ popupOpenButtonAddCard.addEventListener('click', () => {
 });
 
 // создание карточек
-
-
 function generateCardToPage(item) {
   const card = new Card(item, '.template');
   return card.generateCard(openPopupImg);
 };
-
 
 const submitFormAdd = (event) => {
   event.preventDefault();
@@ -64,9 +61,9 @@ const submitFormAdd = (event) => {
 
 cardForm.addEventListener('submit', submitFormAdd);
 
-const addCard = new Section({ renderer: (item) => {
-  return generateCardToPage(item);
-}}, cardsContainer);
+const addCard = new Section(
+  generateCardToPage,
+  cardsContainer);
 addCard.renderItem(initialCards);
 
 // валидация
