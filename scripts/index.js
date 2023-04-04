@@ -19,6 +19,7 @@ import formValidationConfig from "./formValidationConfig.js";
 import Card from "./Card.js";
 import Section from "./Section.js";
 import Popup from "./Popup.js";
+import PopupWithImage from "./PopupWithImage.js";
 import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
@@ -39,7 +40,7 @@ popupOpenButtonEditHead.addEventListener('click', () => {
 // открытие/закрытие popup
 const openPopupEditHead = new Popup(popupEditHead);
 const openPopupAddCard = new Popup(popupAddCard);
-const openPopupImg = new Popup(popupImg);
+const openPopupImg = new PopupWithImage(popupImg);
 
 popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();

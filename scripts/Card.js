@@ -1,7 +1,7 @@
 import {
-  popupImage,
   popupImg,
-  popupImgName
+  popupImage,
+  popupImgName,
 } from "./constants.js";
 class Card {
   constructor(data, templateSelector) {
@@ -23,6 +23,7 @@ class Card {
   }
 
   generateCard(popup) {
+    console.log(popup)
     this._setEventListeners();
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
@@ -30,6 +31,7 @@ class Card {
 
     this._cardsImage.addEventListener('click', () => {
       popup.open(popupImg);
+      console.log(popup)
       popupImage.src = this._link;
       popupImgName.textContent = this._name;
       popupImage.alt = this._name;
