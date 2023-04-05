@@ -1,8 +1,3 @@
-import {
-  popupImg,
-  popupImage,
-  popupImgName,
-} from "./constants.js";
 export default class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
