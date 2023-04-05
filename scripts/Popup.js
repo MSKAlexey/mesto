@@ -1,8 +1,4 @@
-import {
-  popupImage,
-  popupImgName
-} from "./constants.js";
-class Popup {
+export default class Popup {
   constructor(popup) {
     this._popup = popup;
   }
@@ -35,5 +31,3 @@ class Popup {
     });
   }
 }
-
-export default Popup;

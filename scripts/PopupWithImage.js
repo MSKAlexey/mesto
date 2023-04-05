@@ -1,11 +1,20 @@
 import Popup from "./Popup.js";
+import {
+  popupImage,
+  popupImgName,
+} from "./constants.js";
 
-class PopupWithImage extends Popup {
+export default class PopupWithImage extends Popup {
   constructor(popup) {
     super(popup);
-    // this._popupImage = popupImage;
-    // console.log(popupImage)
   }
-}
 
-export default PopupWithImage;
+  open = (name, link) => {
+    this.setEventListeners();
+    this._popup.classList.add('popup_opened');
+    document.addEventListener('keydown', this._handleEscClose);
+    popupImage.src = link;
+    popupImage.alt = link;
+    popupImgName.textContent = name;
+  };
+}

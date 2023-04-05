@@ -3,7 +3,7 @@ import {
   popupImage,
   popupImgName,
 } from "./constants.js";
-class Card {
+export default class Card {
   constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
@@ -23,18 +23,13 @@ class Card {
   }
 
   generateCard(popup) {
-    console.log(popup)
     this._setEventListeners();
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
 
     this._cardsImage.addEventListener('click', () => {
-      popup.open(popupImg);
-      console.log(popup)
-      popupImage.src = this._link;
-      popupImgName.textContent = this._name;
-      popupImage.alt = this._name;
+      popup.open(this._name, this._link);
     });
     return this._element;
   }
@@ -56,5 +51,3 @@ class Card {
     });
   }
 }
-
-export default Card;

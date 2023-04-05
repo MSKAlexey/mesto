@@ -42,6 +42,8 @@ const openPopupEditHead = new Popup(popupEditHead);
 const openPopupAddCard = new Popup(popupAddCard);
 const openPopupImg = new PopupWithImage(popupImg);
 
+
+
 popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();
 });
