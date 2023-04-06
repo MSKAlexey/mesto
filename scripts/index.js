@@ -25,22 +25,26 @@ import UserInfo from "./UserInfo.js";
 import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
-popupEditHead.addEventListener('submit', (event) => {
-  event.preventDefault();
-  profileName.textContent = popupName.value;
-  profileAboutMe.textContent = popupAbout.value;
-  openPopupEditHead.close();
-});
 
+const userInfo = new UserInfo(profileName, profileAboutMe);
+
+const openPopupEditHead = new PopupWithForm(popupEditHead, (data) => {
+  userInfo.setUserInfo(data);
+});
 popupOpenButtonEditHead.addEventListener('click', () => {
   formValidatorEditHead.disabledbuttonSubmit();
-  popupName.value = profileName.textContent;
-  popupAbout.value = profileAboutMe.textContent;
   openPopupEditHead.open();
 });
 
+/* popupOpenButtonEditHead.addEventListener('click', () => {
+  formValidatorEditHead.disabledbuttonSubmit();
+  // popupName.value = profileName.textContent;
+  // popupAbout.value = profileAboutMe.textContent;
+  openPopupEditHead.open();
+});
+ */
 // открытие/закрытие popup
-const openPopupEditHead = new Popup(popupEditHead);
+// const openPopupEditHead = new Popup(popupEditHead);
 const openPopupAddCard = new Popup(popupAddCard);
 const openPopupImg = new PopupWithImage(popupImg);
 
@@ -72,14 +76,14 @@ const addCard = new Section(
 addCard.renderItem(initialCards);
 
 
-const popupEditProfile = new PopupWithForm('.popup_type_profile-edit', (inputValues) => {
-  userInfo.setUserInfo(inputValues);
-});
+// const popupEditProfile = new PopupWithForm('.popup_type_profile-edit', (inputValues) => {
+//   userInfo.setUserInfo(inputValues);
+// });
 
 
-const popupAddCard = new PopupWithForm('.popup_type_add-card', ({titleInput, linkInput}) => {
-  cardsSection.addItem(createCard({name: titleInput, link: linkInput}));
-})
+// const popupAddCard = new PopupWithForm('.popup_type_add-card', ({titleInput, linkInput}) => {
+//   cardsSection.addItem(createCard({name: titleInput, link: linkInput}));
+// })
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
