@@ -25,30 +25,31 @@ import UserInfo from "./UserInfo.js";
 import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
-
 const userInfo = new UserInfo(profileName, profileAboutMe);
 
-const openPopupEditHead = new PopupWithForm(popupEditHead, (data) => {
-  userInfo.setUserInfo(data);
-});
+popupName.addEventListener('submit', (event) => {
+  event.preventDefault();
+  profileName.textContent = popupName.value;
+  profileAboutMe.textContent = popupAbout.value;
+  openPopupEditHead.close();
+})
+
+function submitForm() {
+  // cardsContainer.prepend(generateCardToPage(cardsNameLink));
+  // openPopupAddCard.close();
+  const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value };
+  return cardsNameLink;
+}
+
+// открытие/закрытие popup
+const openPopupEditHead = new Popup(popupEditHead);
+const openPopupAddCard = new PopupWithForm(popupAddCard, submitForm);
+const openPopupImg = new PopupWithImage(popupImg);
+
 popupOpenButtonEditHead.addEventListener('click', () => {
   formValidatorEditHead.disabledbuttonSubmit();
   openPopupEditHead.open();
 });
-
-/* popupOpenButtonEditHead.addEventListener('click', () => {
-  formValidatorEditHead.disabledbuttonSubmit();
-  // popupName.value = profileName.textContent;
-  // popupAbout.value = profileAboutMe.textContent;
-  openPopupEditHead.open();
-});
- */
-// открытие/закрытие popup
-// const openPopupEditHead = new Popup(popupEditHead);
-const openPopupAddCard = new Popup(popupAddCard);
-const openPopupImg = new PopupWithImage(popupImg);
-
-
 
 popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();
@@ -60,30 +61,10 @@ function generateCardToPage(item) {
   return card.generateCard(openPopupImg);
 };
 
-const submitFormAdd = (event) => {
-  event.preventDefault();
-  const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value, };
-  cardForm.reset();
-  cardsContainer.prepend(generateCardToPage(cardsNameLink));
-  openPopupAddCard.close();
-};
-
-cardForm.addEventListener('submit', submitFormAdd);
-
 const addCard = new Section(
   generateCardToPage,
   cardsContainer);
 addCard.renderItem(initialCards);
-
-
-// const popupEditProfile = new PopupWithForm('.popup_type_profile-edit', (inputValues) => {
-//   userInfo.setUserInfo(inputValues);
-// });
-
-
-// const popupAddCard = new PopupWithForm('.popup_type_add-card', ({titleInput, linkInput}) => {
-//   cardsSection.addItem(createCard({name: titleInput, link: linkInput}));
-// })
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
