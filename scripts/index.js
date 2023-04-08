@@ -26,24 +26,21 @@ import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo(profileName, profileAboutMe);
-
-popupName.addEventListener('submit', (event) => {
-  event.preventDefault();
-  profileName.textContent = popupName.value;
-  profileAboutMe.textContent = popupAbout.value;
-  openPopupEditHead.close();
-})
-
-function submitForm() {
-  // cardsContainer.prepend(generateCardToPage(cardsNameLink));
-  // openPopupAddCard.close();
-  const cardsNameLink = { name: inputAddName.value, link: inputAddLink.value };
-  return cardsNameLink;
-}
+// console.log(userInfo)
 
 // открытие/закрытие popup
-const openPopupEditHead = new Popup(popupEditHead);
-const openPopupAddCard = new PopupWithForm(popupAddCard, submitForm);
+const openPopupEditHead = new PopupWithForm(popupEditHead, (inputValues) => {
+  userInfo.setUserInfo(inputValues);
+  console.log(inputValues)
+});
+openPopupEditHead.setEventListeners();
+
+const openPopupAddCard = new PopupWithForm(popupAddCard, ({ titleInput, linkInput }) => {
+  cardsContainer.prepend(generateCardToPage({ cardsNameLink }));
+});
+
+openPopupAddCard.setEventListeners()
+
 const openPopupImg = new PopupWithImage(popupImg);
 
 popupOpenButtonEditHead.addEventListener('click', () => {

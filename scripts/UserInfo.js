@@ -13,5 +13,6 @@ export default class UserInfo {
   setUserInfo(data) {
     this._name = data.name;
     this._about = data.about;
+    console.log(this._name, this._about)
   }
 }
