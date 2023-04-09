@@ -9,8 +9,6 @@ import {
   profileAboutMe,
   profileForm,
   cardForm,
-  inputAddName,
-  inputAddLink,
   popupImg,
   cardsContainer,
 } from "./constants.js";
@@ -26,20 +24,20 @@ import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo(profileName, profileAboutMe);
-// console.log(userInfo)
-
+console.log(userInfo.getUserInfo())
 // открытие/закрытие popup
-const openPopupEditHead = new PopupWithForm(popupEditHead, (inputValues) => {
-  userInfo.setUserInfo(inputValues);
-  console.log(inputValues)
+const openPopupEditHead = new PopupWithForm(popupEditHead, () => {
+  userInfo.setUserInfo();
 });
+// console.log(openPopupEditHead._getInputValues())
+
 openPopupEditHead.setEventListeners();
 
-const openPopupAddCard = new PopupWithForm(popupAddCard, ({ titleInput, linkInput }) => {
-  cardsContainer.prepend(generateCardToPage({ cardsNameLink }));
-});
+// const openPopupAddCard = new PopupWithForm(popupAddCard, ({ titleInput, linkInput }) => {
+//   cardsContainer.prepend(generateCardToPage({ cardsNameLink }));
+// });
 
-openPopupAddCard.setEventListeners()
+// openPopupAddCard.setEventListeners()
 
 const openPopupImg = new PopupWithImage(popupImg);
 
