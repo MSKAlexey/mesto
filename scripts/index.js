@@ -1,10 +1,7 @@
 import {
   popupEditHead,
-  popupAddCard,
   popupOpenButtonEditHead,
   popupOpenButtonAddCard,
-  popupName,
-  popupAbout,
   profileName,
   profileAboutMe,
   profileForm,
@@ -16,7 +13,6 @@ import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
 import Card from "./Card.js";
 import Section from "./Section.js";
-import Popup from "./Popup.js";
 import PopupWithImage from "./PopupWithImage.js";
 import PopupWithForm from "./PopupWithForm.js";
 import UserInfo from "./UserInfo.js";
@@ -29,15 +25,8 @@ console.log(userInfo.getUserInfo())
 const openPopupEditHead = new PopupWithForm(popupEditHead, () => {
   userInfo.setUserInfo();
 });
-// console.log(openPopupEditHead._getInputValues())
 
 openPopupEditHead.setEventListeners();
-
-// const openPopupAddCard = new PopupWithForm(popupAddCard, ({ titleInput, linkInput }) => {
-//   cardsContainer.prepend(generateCardToPage({ cardsNameLink }));
-// });
-
-// openPopupAddCard.setEventListeners()
 
 const openPopupImg = new PopupWithImage(popupImg);
 
