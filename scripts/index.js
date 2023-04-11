@@ -28,7 +28,7 @@ const openPopupEditHead = new PopupWithForm(popupEditHead, () => {
 
 openPopupEditHead.setEventListeners();
 
-const openPopupImg = new PopupWithImage(popupImg);
+const popupWithImage = new PopupWithImage(popupImg);
 
 popupOpenButtonEditHead.addEventListener('click', () => {
   formValidatorEditHead.disabledbuttonSubmit();
@@ -42,7 +42,7 @@ popupOpenButtonAddCard.addEventListener('click', () => {
 // создание карточек
 function generateCardToPage(item) {
   const card = new Card(item, '.template');
-  return card.generateCard(openPopupImg);
+  return card.generateCard(popupWithImage);
 };
 
 const addCard = new Section(
