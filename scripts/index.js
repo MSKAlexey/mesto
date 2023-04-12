@@ -8,6 +8,8 @@ import {
   cardForm,
   popupImg,
   cardsContainer,
+  popupName,
+  popupAbout
 } from "./constants.js";
 import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
@@ -20,19 +22,24 @@ import FormValidator from "./FormValidator.js";
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo(profileName, profileAboutMe);
-console.log(userInfo.getUserInfo())
-// открытие/закрытие popup
+
 const openPopupEditHead = new PopupWithForm(popupEditHead, () => {
-  userInfo.setUserInfo();
+  userInfo.setUserInfo()
 });
 
-openPopupEditHead.setEventListeners();
+function handleOpenPopupEditHead() {
+  const user = userInfo.getUserInfo();
+  popupName.value = user.name;
+  popupAbout.value = user.about;
+  openPopupEditHead.open();
+}
 
 const popupWithImage = new PopupWithImage(popupImg);
 
 popupOpenButtonEditHead.addEventListener('click', () => {
   formValidatorEditHead.disabledbuttonSubmit();
   openPopupEditHead.open();
+  handleOpenPopupEditHead();
 });
 
 popupOpenButtonAddCard.addEventListener('click', () => {
@@ -46,9 +53,9 @@ function generateCardToPage(item) {
 };
 
 const addCard = new Section(
-  generateCardToPage,
+  { items: initialCards, renderer: generateCardToPage },
   cardsContainer);
-addCard.renderItem(initialCards);
+addCard.addCards();
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
