@@ -9,7 +9,8 @@ import {
   popupImg,
   cardsContainer,
   popupName,
-  popupAbout
+  popupAbout,
+  popupAddCard,
 } from "./constants.js";
 import initialCards from "./cards.js";
 import formValidationConfig from "./formValidationConfig.js";
@@ -23,13 +24,14 @@ import FormValidator from "./FormValidator.js";
 // редактирование профиля в заголовке
 const userInfo = new UserInfo(profileName, profileAboutMe);
 
-const openPopupEditHead = new PopupWithForm(popupEditHead, (data) => {
-  userInfo.setUserInfo(data);
-});
+const openPopupEditHead = new PopupWithForm(popupEditHead,
+  (data) => {
+    userInfo.setUserInfo(data);
+  });
 
 function handleOpenPopupEditHead() {
   const user = userInfo.getUserInfo();
-  popupName.value = user.name;
+  popupName.value = user.title;
   popupAbout.value = user.about;
   openPopupEditHead.open();
 }
@@ -42,15 +44,27 @@ popupOpenButtonEditHead.addEventListener('click', () => {
 });
 
 // создание карточек
+const openPopupAddCard = new PopupWithForm(popupAddCard,
+  (data) => {
+    addCards.addItem(data);
+    cardForm.reset();
+  })
+
+popupOpenButtonAddCard.addEventListener('click', () => {
+  const buttonSubmit = cardForm.querySelector(formValidationConfig.buttonSelector);
+  buttonSubmit.disabled = true;
+  buttonSubmit.classList.add('popup__button_disabled');
+  openPopupAddCard.open();
+});
+
 function generateCardToPage(item) {
   const card = new Card(item, '.template');
   return card.generateCard(popupWithImage);
 };
 
-const addCard = new Section(
-  { items: initialCards, renderer: generateCardToPage },
-  cardsContainer);
-addCard.addCards();
+const addCards = new Section(generateCardToPage, cardsContainer);
+
+addCards.addCards(initialCards);
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);

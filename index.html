@@ -53,7 +53,7 @@
         class="popup__input popup__input_type_name"
         placeholder="Введите имя"
         type="text"
-        name="name"
+        name="title"
         minlength="2"
         maxlength="40"
         required>
@@ -78,10 +78,22 @@
       <button type="button" class="popup__close cursor"></button>
       <form class="popup__form popup__form_type_add" action="#" method="get" name="add" novalidate>
         <h2 class="popup__title">Новое место</h2>
-        <input id="input-title" class="popup__input popup__input_type_title" type="text" placeholder="Название"
-          minlength="2" maxlength="30" required><span id="input-title-error" class="error"></span>
-        <input id="input-link" class="popup__input popup__input_type_link" type="url" placeholder="Ссылка на картинку"
-          required><span id="input-link-error" class="error"></span>
+        <input
+        id="input-title"
+        class="popup__input popup__input_type_title"
+        type="text"
+        name="name"
+        placeholder="Название"
+        minlength="2"
+        maxlength="30"
+        required><span id="input-title-error" class="error"></span>
+        <input
+        id="input-link"
+        class="popup__input popup__input_type_link"
+        type="url"
+        name="link"
+        placeholder="Ссылка на картинку"
+        required><span id="input-link-error" class="error"></span>
         <button type="submit" name="button" class="popup__button cursor 2">Создать</button>
       </form>
     </div>
