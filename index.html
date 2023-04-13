@@ -48,10 +48,26 @@
       <button type="button" class="popup__close cursor"></button>
       <form class="popup__form popup__form_type_edit" action="#" method="get" name="edit" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input id="input-name" class="popup__input popup__input_type_name" placeholder="Введите имя" type="text" minlength="2" maxlength="40"
-          required><span id="input-name-error" class="error"></span>
-        <input id="input-about" class="popup__input popup__input_type_about" placeholder="Введите род деятельности" type="text" minlength="2" maxlength="200"
-          required><span id="input-about-error" class="error"></span>
+        <input
+        id="input-name"
+        class="popup__input popup__input_type_name"
+        placeholder="Введите имя"
+        type="text"
+        name="name"
+        minlength="2"
+        maxlength="40"
+        required>
+        <span id="input-name-error" class="error"></span>
+        <input
+        id="input-about"
+        class="popup__input popup__input_type_about"
+        placeholder="Введите род деятельности"
+        name="about"
+        type="text"
+        minlength="2"
+        maxlength="200"
+        required>
+        <span id="input-about-error" class="error"></span>
         <button type="submit" name="button" class="popup__button cursor 1">Сохранить</button>
       </form>
     </div>

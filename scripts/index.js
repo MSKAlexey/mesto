@@ -23,8 +23,8 @@ import FormValidator from "./FormValidator.js";
 // редактирование профиля в заголовке
 const userInfo = new UserInfo(profileName, profileAboutMe);
 
-const openPopupEditHead = new PopupWithForm(popupEditHead, () => {
-  userInfo.setUserInfo()
+const openPopupEditHead = new PopupWithForm(popupEditHead, (data) => {
+  userInfo.setUserInfo(data);
 });
 
 function handleOpenPopupEditHead() {
@@ -38,12 +38,7 @@ const popupWithImage = new PopupWithImage(popupImg);
 
 popupOpenButtonEditHead.addEventListener('click', () => {
   formValidatorEditHead.disabledbuttonSubmit();
-  openPopupEditHead.open();
   handleOpenPopupEditHead();
-});
-
-popupOpenButtonAddCard.addEventListener('click', () => {
-  openPopupAddCard.open();
 });
 
 // создание карточек
