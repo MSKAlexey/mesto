@@ -1,0 +1,11 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "Файл README.md содержит:\r заголовок-название,\r описание проекта и его функциональности,\r указание, что за технологии используются,\r ссылку на GitHub Pages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexey Demin",
+  "license": "ISC"
+}
