@@ -47,14 +47,14 @@ popupOpenButtonEditHead.addEventListener('click', () => {
 // создание карточек
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
-    addCards.addItem(data);
+    cardsList.addItem(data);
     cardForm.reset();
   })
 
 popupOpenButtonAddCard.addEventListener('click', () => {
-  const buttonSubmit = cardForm.querySelector(formValidationConfig.buttonSelector);
-  buttonSubmit.disabled = true;
-  buttonSubmit.classList.add('popup__button_disabled');
+  // const buttonSubmit = cardForm.querySelector(formValidationConfig.buttonSelector);
+  // buttonSubmit.disabled = true;
+  // buttonSubmit.classList.add('popup__button_disabled');
   openPopupAddCard.open();
 });
 
@@ -63,9 +63,9 @@ function generateCardToPage(item) {
   return card.generateCard(popupWithImage);
 };
 
-const addCards = new Section(generateCardToPage, cardsContainer);
+const cardsList = new Section(generateCardToPage, cardsContainer);
 
-addCards.addCards(initialCards);
+cardsList.addCards(initialCards);
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);

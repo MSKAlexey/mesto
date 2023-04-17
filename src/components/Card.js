@@ -18,31 +18,30 @@ export default class Card {
   }
 
   generateCard(popup) {
-    this._setEventListeners();
+    this._setEventListeners(popup);
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
-
-    this._cardsImage.addEventListener('click', () => {
-      popup.open(this._name, this._link);
-    });
     return this._element;
   }
 
-  removeElement() {
+  _removeElement() {
     this._element.remove();
   }
 
-  toggleLikeButton(event) {
+  _toggleLikeButton(event) {
     event.target.classList.toggle('cards__icon_active');
   }
 
-  _setEventListeners() {
+  _setEventListeners(popup) {
+    this._cardsImage.addEventListener('click', () => {
+      popup.open(this._name, this._link);
+    });
     this._element.querySelector('.cards__trash').addEventListener('click', () => {
-      this.removeElement();
+      this._removeElement();
     });
     this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
-      this.toggleLikeButton(event);
+      this._toggleLikeButton(event);
     });
   }
 }
