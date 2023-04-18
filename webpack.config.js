@@ -59,5 +59,6 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
 
-  ]
+  ],
+  devtool: 'sourse-map'
 }

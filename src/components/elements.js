@@ -1,20 +1,16 @@
-
-export const popupImg = document.querySelector('.popup_img');
-
 export const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 export const popupOpenButtonAddCard = document.querySelector('.profile__vector');
 
 // selector cards
-// export const cardsContainer = document.querySelector('.cards');
 export const cardsContainer = '.cards';
 // all popup
 export const popupsList = Array.from(document.querySelectorAll('.popup'));
 
-// selector popup
-export const popupEditHead = document.querySelector('.popup_edit');
-// export const popupEditHead = ('.popup_edit');
-export const popupAddCard = document.querySelector('.popup_add');
-// export const popupAddCard = ('.popup_add');
+// selectors popup
+export const popupEditHead = '.popup_edit';
+export const popupAddCard = '.popup_add';
+export const popupImg = '.popup_img';
+
 // selector form
 export const profileForm = document.forms.edit;
 export const cardForm = document.forms.add;
@@ -27,5 +23,3 @@ export const inputAddLink = cardForm.querySelector('.popup__input_type_link');
 
 export const profileName = '.profile__title';
 export const profileAbout = '.profile__subtitle';
-// export const profileDate = { name: profileName, about: profileAbout}
-
