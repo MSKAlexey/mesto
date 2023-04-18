@@ -1,6 +1,6 @@
 export default class Popup {
-  constructor(popup) {
-    this._popup = popup;
+  constructor(selector) {
+    this._popup = selector;
   }
 
   open() {
@@ -16,18 +16,15 @@ export default class Popup {
 
   _handleEscClose = (event) => {
     if (event.key === 'Escape') {
-      this.close(document.querySelector('.popup_opened'));
-    };
-  };
+      this.close();
+    }
+  }
 
   setEventListeners() {
     this._popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
+      if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
         this.close()
       }
-      if (evt.target.classList.contains('popup__close')) {
-        this.close()
-      };
     });
   }
 }

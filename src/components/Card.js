@@ -1,11 +1,12 @@
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleOpenPopup) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._element = this._getTemplate();
     this._cardsImage = this._element.querySelector('.cards__image');
     this._cardsTitle = this._element.querySelector('.cards__title');
+    this._handleOpenPopup = handleOpenPopup;
   }
 
   _getTemplate() {
@@ -17,8 +18,8 @@ export default class Card {
     return cardElement;
   }
 
-  generateCard(popup) {
-    this._setEventListeners(popup);
+  generateCard() {
+    this._setEventListeners();
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
@@ -33,9 +34,9 @@ export default class Card {
     event.target.classList.toggle('cards__icon_active');
   }
 
-  _setEventListeners(popup) {
+  _setEventListeners() {
     this._cardsImage.addEventListener('click', () => {
-      popup.open(this._name, this._link);
+      this._handleOpenPopup(this._name, this._link);
     });
     this._element.querySelector('.cards__trash').addEventListener('click', () => {
       this._removeElement();

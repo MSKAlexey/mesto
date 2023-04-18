@@ -1,20 +1,20 @@
 import './index.css';
 import {
+  profileName,
+  profileAbout,
   popupEditHead,
+  popupAddCard,
   popupOpenButtonEditHead,
   popupOpenButtonAddCard,
-  profileName,
-  profileAboutMe,
   profileForm,
   cardForm,
   popupImg,
   cardsContainer,
   popupName,
   popupAbout,
-  popupAddCard,
-} from "../components/constants.js";
-import initialCards from "../components/cards.js";
-import formValidationConfig from "../components/formValidationConfig.js";
+} from "../components/elements.js";
+import initialCards from "../utils/cards.js";
+import formValidationConfig from "../utils/formValidationConfig.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -23,7 +23,7 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 
 // редактирование профиля в заголовке
-const userInfo = new UserInfo(profileName, profileAboutMe);
+const userInfo = new UserInfo({ name: profileName, about: profileAbout });
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (data) => {
@@ -32,34 +32,32 @@ const openPopupEditHead = new PopupWithForm(popupEditHead,
 
 function handleOpenPopupEditHead() {
   const user = userInfo.getUserInfo();
+  openPopupEditHead.open();
   popupName.value = user.title;
   popupAbout.value = user.about;
-  openPopupEditHead.open();
 }
+
+popupOpenButtonAddCard.addEventListener('click', () => {
+  openPopupAddCard.open();
+});
 
 const popupWithImage = new PopupWithImage(popupImg);
 
-popupOpenButtonEditHead.addEventListener('click', () => {
-  formValidatorEditHead.disabledbuttonSubmit();
-  handleOpenPopupEditHead();
-});
+function handleOpenPopup(name, link) {
+  popupWithImage.open(name, link);
+  popupWithImage.setEventListeners();
+}
+
+popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
 
 // создание карточек
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
-    cardsList.addItem(data);
-    cardForm.reset();
+    cardsList.renderItem(data);
   })
 
-popupOpenButtonAddCard.addEventListener('click', () => {
-  // const buttonSubmit = cardForm.querySelector(formValidationConfig.buttonSelector);
-  // buttonSubmit.disabled = true;
-  // buttonSubmit.classList.add('popup__button_disabled');
-  openPopupAddCard.open();
-});
-
 function generateCardToPage(item) {
-  const card = new Card(item, '.template');
+  const card = new Card(item, '.template', handleOpenPopup);
   return card.generateCard(popupWithImage);
 };
 
