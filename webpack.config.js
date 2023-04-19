@@ -60,5 +60,5 @@ module.exports = {
     new MiniCssExtractPlugin(),
 
   ],
-  devtool: 'sourse-map'
+  devtool: 'source-map'
 }
