@@ -9,10 +9,10 @@ import {
   profileForm,
   cardForm,
   popupImg,
-  cardsContainer,
+  cardsContainerSelector,
   popupName,
   popupAbout,
-} from "../components/elements.js";
+} from "../utils/elements.js";
 import initialCards from "../utils/cards.js";
 import formValidationConfig from "../utils/formValidationConfig.js";
 import Card from "../components/Card.js";
@@ -29,6 +29,7 @@ const openPopupEditHead = new PopupWithForm(popupEditHead,
   (data) => {
     userInfo.setUserInfo(data);
   });
+openPopupEditHead.setEventListeners(); // я всю голову сломал почему у меня в место одной карточки добавляется несколько!!! да и форма очищается... Огромное спасибо, пачка мне в решении этой проблемы не помогла(((
 
 function handleOpenPopupEditHead() {
   const user = userInfo.getUserInfo();
@@ -42,10 +43,10 @@ popupOpenButtonAddCard.addEventListener('click', () => {
 });
 
 const popupWithImage = new PopupWithImage(popupImg);
+popupWithImage.setEventListeners();
 
 function handleOpenPopup(name, link) {
   popupWithImage.open(name, link);
-  popupWithImage.setEventListeners();
 }
 
 popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
@@ -54,14 +55,15 @@ popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
     cardsList.renderItem(data);
-  })
+  });
+openPopupAddCard.setEventListeners();
 
 function generateCardToPage(item) {
   const card = new Card(item, '.template', handleOpenPopup);
   return card.generateCard(popupWithImage);
 };
 
-const cardsList = new Section(generateCardToPage, cardsContainer);
+const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 
 cardsList.addCards(initialCards);
 
