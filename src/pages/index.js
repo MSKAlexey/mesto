@@ -21,6 +21,9 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
+import Api from "../components/Api.js";
+
+const api = new Api();
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
@@ -29,7 +32,7 @@ const openPopupEditHead = new PopupWithForm(popupEditHead,
   (data) => {
     userInfo.setUserInfo(data);
   });
-openPopupEditHead.setEventListeners(); // я всю голову сломал почему у меня в место одной карточки добавляется несколько!!! да и форма очищается... Огромное спасибо, пачка мне в решении этой проблемы не помогла(((
+openPopupEditHead.setEventListeners();
 
 function handleOpenPopupEditHead() {
   const user = userInfo.getUserInfo();
