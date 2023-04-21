@@ -13,7 +13,6 @@ import {
   popupName,
   popupAbout,
 } from "../utils/elements.js";
-// import initialCards from "../utils/cards.js";
 import formValidationConfig from "../utils/formValidationConfig.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -23,8 +22,7 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
-
-// console.log(initialCards)
+const api = new Api();
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
@@ -56,27 +54,33 @@ function handleOpenPopup(name, link) {
 popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
 
 // создание карточек
+const cardsList = new Section(generateCardToPage, cardsContainerSelector);
+
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
-    cardsList.renderItem(data);
+    api
+      .addItem(data)
+      .then((item) => {
+        cardsList.renderItem(item);
+      })
+      .catch((err) => console.log(err))
+      // .finally(() => popupAdd.renderLoading(false));
   });
+
 openPopupAddCard.setEventListeners();
 
 function generateCardToPage(item) {
   const card = new Card(item, '.template', handleOpenPopup);
   return card.generateCard(popupWithImage);
 };
-const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 // отображаем карточки полученные с сервера
-const api = new Api();
 const initialCards = api.getInitialCards();
 initialCards.then(data => {
   cardsList.addCards(data);
-console.log(data)
 })
+  .catch(err => alert(err)) // выводим ошибку в самом конце then цепочки
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
 formValidatorEditHead.enableValidation();
-
 const formValidatorAddCard = new FormValidator(formValidationConfig, cardForm);
 formValidatorAddCard.enableValidation();
