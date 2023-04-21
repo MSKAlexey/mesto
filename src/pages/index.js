@@ -13,7 +13,7 @@ import {
   popupName,
   popupAbout,
 } from "../utils/elements.js";
-import initialCards from "../utils/cards.js";
+// import initialCards from "../utils/cards.js";
 import formValidationConfig from "../utils/formValidationConfig.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -23,7 +23,8 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
-const api = new Api();
+
+// console.log(initialCards)
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
@@ -65,11 +66,14 @@ function generateCardToPage(item) {
   const card = new Card(item, '.template', handleOpenPopup);
   return card.generateCard(popupWithImage);
 };
-
 const cardsList = new Section(generateCardToPage, cardsContainerSelector);
-
-cardsList.addCards(initialCards);
-
+// отображаем карточки полученные с сервера
+const api = new Api();
+const initialCards = api.getInitialCards();
+initialCards.then(data => {
+  cardsList.addCards(data);
+console.log(data)
+})
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
 formValidatorEditHead.enableValidation();

@@ -7,19 +7,20 @@ export default class Api {
     };
   }
 
-  _checkStatusResponse(response) {
-    if (response.ok) {
-      return response.json();
+  _checkStatusResponse(res) {
+    if (res.ok) {
+      return res.json();
     }
-    return Promise.reject(`Ошибка: ${response.status}`);
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: this._headers,
-    })
-      .then(this._checkStatusResponse);
+    }).then/* (res => {
+      debugger
+    }) */(this._checkStatusResponse);
   }
 
 
@@ -30,8 +31,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: this._headers,
-    })
-      .then(this._checkStatusResponse);
+    }).then(this._checkStatusResponse);
   }
 
 
