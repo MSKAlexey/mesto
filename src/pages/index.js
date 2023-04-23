@@ -54,31 +54,41 @@ function handleOpenPopup(name, link) {
 popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
 
 // создание карточек
+function generateCardToPage(item) {
+  const card = new Card(item, '.template', handleOpenPopup,
+
+  () => {
+    api
+      .deleteCard(item._id)
+      .then(() => {
+        card.removeElement();
+      })
+      .catch(err => console.log(err));
+  })
+
+
+  return card.generateCard(popupWithImage);
+};
+
 const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
     api
       .addItem(data)
-      .then((item) => {
+      .then(item => {
         cardsList.renderItem(item);
       })
-      .catch((err) => console.log(err))
-      // .finally(() => popupAdd.renderLoading(false));
-  });
+  })
 
 openPopupAddCard.setEventListeners();
-
-function generateCardToPage(item) {
-  const card = new Card(item, '.template', handleOpenPopup);
-  return card.generateCard(popupWithImage);
-};
 // отображаем карточки полученные с сервера
 const initialCards = api.getInitialCards();
+
 initialCards.then(data => {
   cardsList.addCards(data);
 })
-  .catch(err => alert(err)) // выводим ошибку в самом конце then цепочки
+  .catch(err => console.log(err))
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
 formValidatorEditHead.enableValidation();

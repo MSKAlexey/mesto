@@ -1,6 +1,8 @@
+// import { data } from "jquery";
+
 export default class Api {
   constructor() {
-    this._baseUrl = "https://mesto.nomoreparties.co/v1/cohort-64";
+    this._url = "https://mesto.nomoreparties.co/v1/cohort-64/";
     this._headers = {
       authorization: "45c7ab21-c601-4d3e-824d-76630cdc55cf",
       "Content-Type": "application/json",
@@ -15,7 +17,7 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`,
+    return fetch(`${this._url}cards`,
       {
         method: "GET",
         headers: this._headers,
@@ -23,7 +25,7 @@ export default class Api {
   }
 
   addItem({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`,
+    return fetch(`${this._url}cards`,
       {
         method: "POST",
         headers: this._headers,
@@ -34,12 +36,20 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
+  deleteCard(id) {
+    return fetch(`${this._url}cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then(this._checkStatusResponse);
+  }
+
 
 
 
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
     }).then(this._checkStatusResponse);

@@ -26,7 +26,7 @@ export default class Card {
     return this._element;
   }
 
-  _removeElement() {
+  removeElement() {
     this._element.remove();
   }
 
@@ -39,7 +39,7 @@ export default class Card {
       this._handleOpenPopup(this._name, this._link);
     });
     this._element.querySelector('.cards__trash').addEventListener('click', () => {
-      this._removeElement();
+      this.removeElement();
     });
     this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
       this._toggleLikeButton(event);
