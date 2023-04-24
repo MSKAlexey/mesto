@@ -5,11 +5,11 @@ export default class Section {
   }
 
   renderItem(item) {
-    this.addItem(this._renderer(item));
+    this._cardsContainerSelector.append(this._renderer(item));
   }
 
-  addItem(element) {
-    this._cardsContainerSelector.prepend(element);
+  addItem(item) {
+    this._cardsContainerSelector.prepend(this._renderer(item));
   }
 
   addCards(items) {

@@ -68,7 +68,7 @@ const openPopupAddCard = new PopupWithForm(popupAddCard,
     api
       .addItem(data)
       .then(item => {
-        cardsList.renderItem(item);
+        cardsList.addItem(item);
       })
   })
 
