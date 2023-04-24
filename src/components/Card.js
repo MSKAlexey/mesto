@@ -1,5 +1,10 @@
 export default class Card {
-  constructor(data, templateSelector, handleOpenPopup) {
+  constructor(
+    data,
+    templateSelector,
+    handleOpenPopup,
+    api,
+  ) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
@@ -7,6 +12,9 @@ export default class Card {
     this._cardsImage = this._element.querySelector('.cards__image');
     this._cardsTitle = this._element.querySelector('.cards__title');
     this._handleOpenPopup = handleOpenPopup;
+    this._id = data._id;
+    this._api = api;
+    console.log(this._id)
   }
 
   _getTemplate() {
@@ -27,22 +35,31 @@ export default class Card {
   }
 
   removeElement() {
-    this._element.remove();
-  }
+    this._api.deleteCard(this._id)
+      .then(() => {
+        this._element.remove();
+  })
+  .catch (err => console.log(err));
+}
 
-  _toggleLikeButton(event) {
-    event.target.classList.toggle('cards__icon_active');
-  }
+_toggleLikeButton(event) {
+  event.target.classList.toggle('cards__icon_active');
+}
 
-  _setEventListeners() {
-    this._cardsImage.addEventListener('click', () => {
-      this._handleOpenPopup(this._name, this._link);
-    });
-    this._element.querySelector('.cards__trash').addEventListener('click', () => {
-      this.removeElement();
-    });
-    this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
-      this._toggleLikeButton(event);
-    });
-  }
+_setEventListeners() {
+
+  this._cardsImage.addEventListener('click', () => {
+    this._handleOpenPopup(this._name, this._link);
+  });
+
+  this._element.querySelector('.cards__trash').addEventListener('click', () => {
+    this.removeElement();
+  });
+
+  this._element.querySelector('.cards__icon').addEventListener('click', (event) => {
+    this._toggleLikeButton(event);
+  });
+
+}
+
 }

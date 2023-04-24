@@ -24,13 +24,22 @@ import Api from "../components/Api.js";
 
 const api = new Api();
 
+let userId;
+
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
-  (data) => {
-    userInfo.setUserInfo(data);
+  (userData) => {
+    api
+      .changeUserInfo(userData)
+      .then(data => {
+        userInfo.setUserInfo(data);
+      })
+      .catch(err => console.log(err));
   });
+
+// console.log(api.getUserInfo())
 openPopupEditHead.setEventListeners();
 
 function handleOpenPopupEditHead() {
@@ -54,19 +63,23 @@ function handleOpenPopup(name, link) {
 popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
 
 // создание карточек
-function generateCardToPage(item) {
-  const card = new Card(item, '.template', handleOpenPopup,
+function generateCardToPage(data) {
+  const card = new Card(
+    data,
+    '.template',
+    handleOpenPopup,
+    api,
   )
 
-  return card.generateCard(popupWithImage);
+  return card.generateCard();
 };
-
+// создаем новые карточки
 const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
     api
-      .addItem(data)
+      .addCard(data)
       .then(item => {
         cardsList.addItem(item);
       })
@@ -80,7 +93,8 @@ const initialCards = api.getInitialCards();
 initialCards.then(data => {
   cardsList.addCards(data);
 })
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
+
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
 formValidatorEditHead.enableValidation();

@@ -1,5 +1,3 @@
-// import { data } from "jquery";
-
 export default class Api {
   constructor() {
     this._url = "https://mesto.nomoreparties.co/v1/cohort-64/";
@@ -13,7 +11,7 @@ export default class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Всё пропало из-за ошибки: ${res.status}`);
+    return Promise.reject(`Произошла ошибка`);
   }
 
   getInitialCards() {
@@ -24,7 +22,7 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
-  addItem({ name, link }) {
+  addCard({ name, link }) {
     return fetch(`${this._url}cards`,
       {
         method: "POST",
@@ -32,30 +30,49 @@ export default class Api {
         body: JSON.stringify({
           name: name,
           link: link,
-        }),
+        })
       }).then(this._checkStatusResponse);
   }
 
-  deleteCard(id) {
-    return fetch(`${this._url}cards/${id}`, {
-      method: "DELETE",
-      headers: this._headers,
-    })
-      .then(this._checkStatusResponse);
-  }
-
-
-
-
-
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}users/me`, {
       method: "GET",
       headers: this._headers,
     }).then(this._checkStatusResponse);
   }
 
+  changeUserInfo(userData) {
+    return fetch(`${this._url}users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(userData)
+    }).then(this._checkStatusResponse);
+  }
 
+
+
+
+
+  deleteCard(id) {
+    return fetch(`${this._url}cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkStatusResponse);
+  }
+
+  addLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  deleteLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
 
 
 }
