@@ -56,16 +56,7 @@ popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
 // создание карточек
 function generateCardToPage(item) {
   const card = new Card(item, '.template', handleOpenPopup,
-
-  () => {
-    api
-      .deleteCard(item._id)
-      .then(() => {
-        card.removeElement();
-      })
-      .catch(err => console.log(err));
-  })
-
+  )
 
   return card.generateCard(popupWithImage);
 };
@@ -82,6 +73,7 @@ const openPopupAddCard = new PopupWithForm(popupAddCard,
   })
 
 openPopupAddCard.setEventListeners();
+
 // отображаем карточки полученные с сервера
 const initialCards = api.getInitialCards();
 
