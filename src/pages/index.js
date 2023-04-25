@@ -28,14 +28,14 @@ const api = new Api();
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
-  (userData) => {
-    console.log(userData)
-  api
-  .changeUserInfo(userData)
-  .then(data => {
-    userInfo.setUserInfo(data);
+  (data) => {
+    // console.log(userData)
+    // api
+    //   .changeUserInfo(userData)
+      // .then(data => {
+        userInfo.setUserInfo(data);
+      // })
   })
-})
 
 openPopupEditHead.setEventListeners();
 
@@ -95,7 +95,6 @@ const initialCards = api.getInitialCards();
 initialCards.then(data => {
   cardsList.addCards(data);
 })
-  
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
