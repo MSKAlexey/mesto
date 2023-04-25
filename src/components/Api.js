@@ -42,7 +42,7 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
-  changeUserInfo(userData) {
+  changeUserInfo() {
     return fetch(`${this._url}users/me`, {
       method: "PATCH",
       headers: this._headers,
