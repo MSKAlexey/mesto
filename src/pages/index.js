@@ -23,30 +23,29 @@ import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
 const api = new Api();
+const getUserInfo = api.getUserInfo();
+
 
 let userId;
+
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
 
-const openPopupEditHead = new PopupWithForm(popupEditHead,
-  (userData) => {
-    api
-      .changeUserInfo(userData)
-      .then(data => {
-        userInfo.setUserInfo(data);
-      })
-      .catch(err => console.log(err));
-  });
+const openPopupEditHead = new PopupWithForm(popupEditHead);
 
-// console.log(api.getUserInfo())
 openPopupEditHead.setEventListeners();
 
 function handleOpenPopupEditHead() {
-  const user = userInfo.getUserInfo();
+  api
+    .getUserInfo()
+    .then(data => {
+      const user = userInfo.getUserInfo(data);
+      popupName.value = data.name;
+      popupAbout.value = data.about;
+    })
+
   openPopupEditHead.open();
-  popupName.value = user.title;
-  popupAbout.value = user.about;
 }
 
 popupOpenButtonAddCard.addEventListener('click', () => {

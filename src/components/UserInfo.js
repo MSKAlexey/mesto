@@ -4,7 +4,7 @@ export default class UserInfo {
     this._about = document.querySelector(about);
   }
 
-  getUserInfo() {
+  getUserInfo(data) {
     return {
       title: this._name.textContent,
       about: this._about.textContent,
