@@ -23,17 +23,11 @@ import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
 const api = new Api();
-const getUserInfo = api.getUserInfo();
-
-
-let userId;
-
 
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
 
 const openPopupEditHead = new PopupWithForm(popupEditHead);
-
 openPopupEditHead.setEventListeners();
 
 function handleOpenPopupEditHead() {
@@ -41,8 +35,8 @@ function handleOpenPopupEditHead() {
     .getUserInfo()
     .then(data => {
       const user = userInfo.getUserInfo(data);
-      popupName.value = data.name;
-      popupAbout.value = data.about;
+      popupName.value = user.title;
+      popupAbout.value = user.about;
     })
 
   openPopupEditHead.open();

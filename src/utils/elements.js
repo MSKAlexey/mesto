@@ -4,7 +4,7 @@ export const popupOpenButtonAddCard = document.querySelector('.profile__vector')
 // selector cards
 export const cardsContainerSelector = '.cards';
 // all popup
-export const popupsList = Array.from(document.querySelectorAll('.popup'));
+// export const popupsList = Array.from(document.querySelectorAll('.popup'));
 
 // selectors popup
 export const popupEditHead = '.popup_edit';
