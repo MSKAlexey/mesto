@@ -27,7 +27,16 @@ const api = new Api();
 // редактирование профиля в заголовке
 const userInfo = new UserInfo({ name: profileName, about: profileAbout });
 
-const openPopupEditHead = new PopupWithForm(popupEditHead);
+const openPopupEditHead = new PopupWithForm(popupEditHead,
+  (userData) => {
+    console.log(userData)
+  api
+  .changeUserInfo(userData)
+  .then(data => {
+    userInfo.setUserInfo(data);
+  })
+})
+
 openPopupEditHead.setEventListeners();
 
 function handleOpenPopupEditHead() {
@@ -86,7 +95,7 @@ const initialCards = api.getInitialCards();
 initialCards.then(data => {
   cardsList.addCards(data);
 })
-  .catch(err => console.log(err));
+  
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);

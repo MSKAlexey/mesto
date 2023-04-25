@@ -22,6 +22,7 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
+
   addCard({ name, link }) {
     return fetch(`${this._url}cards`,
       {
@@ -42,12 +43,13 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
-  changeUserInfo() {
-    return fetch(`${this._url}users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(userData)
-    }).then(this._checkStatusResponse);
+  changeUserInfo(userData) {
+    return fetch(`${this._url}users/me`,
+      {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify(userData)
+      }).then(this._checkStatusResponse);
   }
 
 
