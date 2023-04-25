@@ -22,7 +22,6 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
-
   addCard({ name, link }) {
     return fetch(`${this._url}cards`,
       {
@@ -43,15 +42,16 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
-  changeUserInfo(userData) {
-    return fetch(`${this._url}users/me`,
-      {
-        method: "PATCH",
-        headers: this._headers,
-        body: JSON.stringify(userData)
-      }).then(this._checkStatusResponse);
+  changeUserInfo({ title, about }) {
+    return fetch(`${this._url}users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: title,
+        about: about,
+      }),
+    }).then(this._checkStatusResponse);
   }
-
 
 
 
@@ -62,20 +62,5 @@ export default class Api {
       headers: this._headers,
     }).then(this._checkStatusResponse);
   }
-
-  addLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
-  deleteLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
 
 }

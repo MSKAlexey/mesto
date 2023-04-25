@@ -25,17 +25,22 @@ import Api from "../components/Api.js";
 const api = new Api();
 
 // редактирование профиля в заголовке
-const userInfo = new UserInfo({ name: profileName, about: profileAbout });
+const userInfo = new UserInfo({
+  name: profileName,
+  about: profileAbout
+});
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
-  (data) => {
-    // console.log(userData)
-    // api
-    //   .changeUserInfo(userData)
-      // .then(data => {
+  (formData) => {
+    // popupEditHead.renderLoading(true);
+    api
+      .changeUserInfo(formData)
+      .then((data) => {
         userInfo.setUserInfo(data);
-      // })
-  })
+      })
+      .catch((err) => console.log(err))
+    // .finally(() => popupEditHead.renderLoading(false));
+  });
 
 openPopupEditHead.setEventListeners();
 
