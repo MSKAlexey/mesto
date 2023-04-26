@@ -26,7 +26,6 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
-
 const api = new Api();
 
 let userId;
@@ -38,11 +37,11 @@ const userInfo = new UserInfo({
 });
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([user, card]) => {
+  .then(([data, card]) => {
     // получаем свой id
-    userId = user._id;
+    userId = data._id;
     // отображаем карточки полученные с сервера для профиля
-    userInfo.setUserInfo(user);
+    userInfo.setUserInfo(data);
     // отображаем карточки полученные с сервера для профиля
     cardsList.addCards(card);
   })
@@ -62,7 +61,6 @@ openPopupEditHead.setEventListeners();
 
 const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
-    console.log(formData.link)
     api
       .changeUserAvatar(formData)
       .then(data => {
@@ -107,7 +105,7 @@ function generateCardToPage(data) {
     '.template',
     handleOpenPopup,
     api,
-    () => {
+    (data) => {
       if (!card.isLiked()) {
         api
           .addLike(data._id)

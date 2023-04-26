@@ -67,11 +67,7 @@ export default class Card {
       this._toggleLikeButton(event);
     });
 
-    this._element.querySelector('.cards__icon').addEventListener('click', () => this._handleLikeClick());
-
-
-
-
+    this._element.querySelector('.cards__icon').addEventListener('click', () => this._handleLikeClick(data));
 
   }
 

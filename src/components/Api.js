@@ -58,24 +58,23 @@ export default class Api {
         body: JSON.stringify({
           name: title,
           about: about,
-          // avatar: avatar,
         })
       }).then(this._checkStatusResponse);
   }
 
-  changeUserAvatar({avatar}) {
+
+
+  changeUserAvatar(avatar) {
     return fetch(`${this._url}users/me/avatar`,
       {
         method: "PATCH",
         headers: this._headers,
-        body: JSON.stringify({
-          avatar: avatar,
-        })
+        body: JSON.stringify(avatar)
       }).then(this._checkStatusResponse);
   }
 
   addLike(id) {
-    return fetch(`${this._baseUrl}cards/${id}/likes`,
+    return fetch(`${this._url}cards/${id}/likes`,
       {
         method: "PUT",
         headers: this._headers,
@@ -83,7 +82,7 @@ export default class Api {
   }
 
   deleteLike(id) {
-    return fetch(`${this._baseUrl}/cards/${id}/likes`,
+    return fetch(`${this._url}/cards/${id}/likes`,
       {
         method: "DELETE",
         headers: this._headers,
