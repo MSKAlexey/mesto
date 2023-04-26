@@ -12,6 +12,9 @@ import {
   cardsContainerSelector,
   popupName,
   popupAbout,
+  popupOpenButtonEditAvatar,
+  popupEditAvatar,
+  profileFormAvatar,
 } from "../utils/elements.js";
 import formValidationConfig from "../utils/formValidationConfig.js";
 import Card from "../components/Card.js";
@@ -21,6 +24,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
+
+console.log(profileFormAvatar)
 
 const api = new Api();
 
@@ -56,10 +61,6 @@ function handleOpenPopupEditHead() {
   openPopupEditHead.open();
 }
 
-popupOpenButtonAddCard.addEventListener('click', () => {
-  openPopupAddCard.open();
-});
-
 const popupWithImage = new PopupWithImage(popupImg);
 popupWithImage.setEventListeners();
 
@@ -68,6 +69,17 @@ function handleOpenPopup(name, link) {
 }
 
 popupOpenButtonEditHead.addEventListener('click', handleOpenPopupEditHead);
+
+popupOpenButtonEditAvatar.addEventListener('click', () => {
+  openPopupEditAvatar.open();
+})
+
+popupOpenButtonAddCard.addEventListener('click', () => {
+  openPopupAddCard.open();
+});
+
+const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,)
+openPopupEditAvatar.setEventListeners();
 
 // создание карточек
 function generateCardToPage(data) {
@@ -104,5 +116,9 @@ initialCards.then(data => {
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
 formValidatorEditHead.enableValidation();
+
 const formValidatorAddCard = new FormValidator(formValidationConfig, cardForm);
 formValidatorAddCard.enableValidation();
+
+const formValidatorEditAvatar = new FormValidator(formValidationConfig, profileFormAvatar);
+formValidatorEditAvatar.enableValidation();

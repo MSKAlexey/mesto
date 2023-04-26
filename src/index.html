@@ -43,7 +43,8 @@
 
   </div>
 
-  <!-- popup -->
+  <!-- popups -->
+  <!-- редактирование профиля -->
   <div class="popup popup_edit" id="popup_edit">
     <div class="popup__container">
       <button type="button" class="popup__close cursor"></button>
@@ -69,11 +70,11 @@
         maxlength="200"
         required>
         <span id="input-about-error" class="error"></span>
-        <button type="submit" name="button" class="popup__button cursor 1">Сохранить</button>
+        <button type="submit" name="button" class="popup__button cursor">Сохранить</button>
       </form>
     </div>
   </div>
-
+<!-- добавление карточки -->
   <div class="popup popup_add" id="popup_add">
     <div class="popup__container">
       <button type="button" class="popup__close cursor"></button>
@@ -95,11 +96,11 @@
         name="link"
         placeholder="Ссылка на картинку"
         required><span id="input-link-error" class="error"></span>
-        <button type="submit" name="button" class="popup__button cursor 2">Создать</button>
+        <button type="submit" name="button" class="popup__button cursor">Создать</button>
       </form>
     </div>
   </div>
-
+<!-- открытие картинки -->
   <div class="popup popup_img">
     <div class="popup__content">
       <button type="button" class="popup__close cursor"></button>
@@ -107,6 +108,23 @@
         <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt=""
           class="popup__image">
         <h2 class="popup__name"></h2>
+      </form>
+    </div>
+  </div>
+<!-- редактирование аватара -->
+  <div class="popup popup_avatar" id="popup_avatar">
+    <div class="popup__container">
+      <button type="button" class="popup__close cursor"></button>
+      <form class="popup__form popup__form_type_avatar" action="#" method="get" name="avatar" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <input
+        id="input-link-type-avatar"
+        class="popup__input popup__input_type_link"
+        type="url"
+        name="link"
+        placeholder="Ссылка на картинку"
+        required><span id="input-link-type-avatar-error" class="error"></span>
+        <button type="submit" name="button" class="popup__button cursor">Сохранить</button>
       </form>
     </div>
   </div>

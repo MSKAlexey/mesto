@@ -1,5 +1,6 @@
 export const popupOpenButtonEditHead = document.querySelector('.profile__popup-open');
 export const popupOpenButtonAddCard = document.querySelector('.profile__vector');
+export const popupOpenButtonEditAvatar = document.querySelector('.profile__image');
 
 // selector cards
 export const cardsContainerSelector = '.cards';
@@ -8,11 +9,13 @@ export const cardsContainerSelector = '.cards';
 
 // selectors popup
 export const popupEditHead = '.popup_edit';
+export const popupEditAvatar = '.popup_avatar';
 export const popupAddCard = '.popup_add';
 export const popupImg = '.popup_img';
 
 // selector form
 export const profileForm = document.forms.edit;
+export const profileFormAvatar = document.forms.avatar;
 export const cardForm = document.forms.add;
 // inputs form editProfile
 export const popupName = document.querySelector('.popup__input_type_name');
