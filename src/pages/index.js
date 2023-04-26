@@ -26,12 +26,16 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
-// console.log(profileFormAvatar)
 
 const api = new Api();
 
 let userId;
 
+const userInfo = new UserInfo({
+  name: profileName,
+  about: profileAbout,
+  avatar: profileAvatar,
+});
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([user, card]) => {
@@ -44,40 +48,36 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   })
   .catch((err) => console.log(err))
 
-const userInfo = new UserInfo({
-  name: profileName,
-  about: profileAbout,
-  avatar: profileAvatar,
-});
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (formData) => {
     api
       .changeUserInfo(formData)
-      .then((data) => {
+      .then(data => {
         userInfo.setUserInfo(data);
       })
       .catch((err) => console.log(err))
   });
 openPopupEditHead.setEventListeners();
 
-const openPopupEditAvatar = new PopupWithForm(popupEditAvatar, (formData) => {
-  api
-    .changeUserAvatar(formData)
-    .then((data) => {
-      userInfo.setUserInfo(data);
-    })
-    .catch((err) => console.log(err))
-});
+const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
+  (formData) => {
+    // console.log(formData.link)
+    api
+      .changeUserAvatar(formData)
+      .then(data => {
+        userInfo.setUserAvatar(data);
+      })
+      .catch(err => console.log(err))
+  });
 openPopupEditAvatar.setEventListeners();
 
 function handleOpenPopupEditHead() {
   api
     .getUserInfo()
     .then(data => {
-      const user = userInfo.getUserInfo(data);
-      popupName.value = user.title;
-      popupAbout.value = user.about;
+      popupName.value = data.name;
+      popupAbout.value = data.about;
     })
   openPopupEditHead.open();
 }
