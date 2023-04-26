@@ -99,6 +99,7 @@ popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();
 });
 
+
 // создание карточек
 function generateCardToPage(data) {
   const card = new Card(
@@ -106,7 +107,32 @@ function generateCardToPage(data) {
     '.template',
     handleOpenPopup,
     api,
+    () => {
+      if (!card.isLiked()) {
+        api
+          .addLike(data._id)
+          .then((data) => {
+            card.updateData(data);
+            card.updateLikesView();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      } else {
+        api
+          .deleteLike(data._id)
+          .then((data) => {
+            card.updateData(data);
+            card.updateLikesView();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
+    },
+    userId,
   )
+
 
   return card.generateCard();
 };

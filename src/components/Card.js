@@ -4,6 +4,8 @@ export default class Card {
     templateSelector,
     handleOpenPopup,
     api,
+    handleLikeClick,
+    userId,
   ) {
     this._name = data.name;
     this._link = data.link;
@@ -14,6 +16,10 @@ export default class Card {
     this._handleOpenPopup = handleOpenPopup;
     this._id = data._id;
     this._api = api;
+    this._handleLikeClick = handleLikeClick;
+    this._likes = data.likes;
+    this._userId = userId;
+    this._numberLikeClick = this._element.querySelector('.cards__count');
   }
 
   _getTemplate() {
@@ -22,6 +28,7 @@ export default class Card {
       .content
       .querySelector('.cards__item')
       .cloneNode(true);
+
     return cardElement;
   }
 
@@ -30,6 +37,7 @@ export default class Card {
     this._cardsImage.src = this._link;
     this._cardsImage.alt = this._name;
     this._cardsTitle.textContent = this._name;
+    this._numberLikeClick.textContent = this._likes.length;
     return this._element;
   }
 
@@ -59,6 +67,19 @@ export default class Card {
       this._toggleLikeButton(event);
     });
 
+  }
+
+  updateData(newData) {
+    this._likes = newData.likes;
+  }
+
+  updateLikesView() {
+    this._numberLikeClick.textContent = this._likes.length;
+    if (this.isLiked()) {
+      this._like.classList.add('card__button-like_active');
+    } else {
+      this._like.classList.remove('card__button-like_active');
+    }
   }
 
 }
