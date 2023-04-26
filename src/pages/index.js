@@ -62,7 +62,7 @@ openPopupEditHead.setEventListeners();
 
 const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
-    // console.log(formData.link)
+    console.log(formData.link)
     api
       .changeUserAvatar(formData)
       .then(data => {

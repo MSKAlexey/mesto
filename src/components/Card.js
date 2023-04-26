@@ -67,6 +67,12 @@ export default class Card {
       this._toggleLikeButton(event);
     });
 
+    this._element.querySelector('.cards__icon').addEventListener('click', () => this._handleLikeClick());
+
+
+
+
+
   }
 
   updateData(newData) {
@@ -80,6 +86,10 @@ export default class Card {
     } else {
       this._like.classList.remove('card__button-like_active');
     }
+  }
+
+  isLiked() {
+    return this._likes.some((item) => item._id === this._userId);
   }
 
 }
