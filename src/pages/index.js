@@ -25,11 +25,10 @@ import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
 
-console.log(profileFormAvatar)
+// console.log(profileFormAvatar)
 
 const api = new Api();
 
-// редактирование профиля в заголовке
 const userInfo = new UserInfo({
   name: profileName,
   about: profileAbout
