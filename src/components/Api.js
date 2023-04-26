@@ -34,6 +34,14 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
+  deleteCard(id) {
+    return fetch(`${this._url}cards/${id}`,
+      {
+        method: "DELETE",
+        headers: this._headers,
+      }).then(this._checkStatusResponse);
+  }
+
   getUserInfo() {
     return fetch(`${this._url}users/me`,
       {
@@ -43,24 +51,26 @@ export default class Api {
   }
 
   changeUserInfo({ title, about }) {
-    return fetch(`${this._url}users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({
-        name: title,
-        about: about,
-      }),
-    }).then(this._checkStatusResponse);
+    return fetch(`${this._url}users/me`,
+      {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+          name: title,
+          about: about,
+        })
+      }).then(this._checkStatusResponse);
   }
 
-
-
-
-  deleteCard(id) {
-    return fetch(`${this._url}cards/${id}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkStatusResponse);
+  changeUserAvatar({ avatar }) {
+    return fetch(`${this._url}users/me/avatar`,
+      {
+        method: "PATCH",
+        headers: this._headers,
+        body: JSON.stringify({
+          avatar: avatar,
+        })
+      }).then(this._checkStatusResponse);
   }
 
 }

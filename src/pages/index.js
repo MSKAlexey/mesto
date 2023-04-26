@@ -15,6 +15,7 @@ import {
   popupOpenButtonEditAvatar,
   popupEditAvatar,
   profileFormAvatar,
+  profileAvatar,
 } from "../utils/elements.js";
 import formValidationConfig from "../utils/formValidationConfig.js";
 import Card from "../components/Card.js";
@@ -29,24 +30,46 @@ import Api from "../components/Api.js";
 
 const api = new Api();
 
+let userId;
+
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([user, card]) => {
+    // получаем свой id
+    userId = user._id;
+    // отображаем карточки полученные с сервера для профиля
+    userInfo.setUserInfo(user);
+    // отображаем карточки полученные с сервера для профиля
+    cardsList.addCards(card);
+  })
+  .catch((err) => console.log(err))
+
 const userInfo = new UserInfo({
   name: profileName,
-  about: profileAbout
+  about: profileAbout,
+  avatar: profileAvatar,
 });
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (formData) => {
-    // popupEditHead.renderLoading(true);
     api
       .changeUserInfo(formData)
       .then((data) => {
         userInfo.setUserInfo(data);
       })
       .catch((err) => console.log(err))
-    // .finally(() => popupEditHead.renderLoading(false));
   });
-
 openPopupEditHead.setEventListeners();
+
+const openPopupEditAvatar = new PopupWithForm(popupEditAvatar, (formData) => {
+  api
+    .changeUserAvatar(formData)
+    .then((data) => {
+      userInfo.setUserInfo(data);
+    })
+    .catch((err) => console.log(err))
+});
+openPopupEditAvatar.setEventListeners();
 
 function handleOpenPopupEditHead() {
   api
@@ -56,7 +79,6 @@ function handleOpenPopupEditHead() {
       popupName.value = user.title;
       popupAbout.value = user.about;
     })
-
   openPopupEditHead.open();
 }
 
@@ -76,9 +98,6 @@ popupOpenButtonEditAvatar.addEventListener('click', () => {
 popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();
 });
-
-const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,)
-openPopupEditAvatar.setEventListeners();
 
 // создание карточек
 function generateCardToPage(data) {
@@ -102,15 +121,7 @@ const openPopupAddCard = new PopupWithForm(popupAddCard,
         cardsList.addItem(item);
       })
   })
-
 openPopupAddCard.setEventListeners();
-
-// отображаем карточки полученные с сервера
-const initialCards = api.getInitialCards();
-
-initialCards.then(data => {
-  cardsList.addCards(data);
-})
 
 // валидация
 const formValidatorEditHead = new FormValidator(formValidationConfig, profileForm);
