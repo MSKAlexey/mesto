@@ -16,12 +16,14 @@ import {
   popupEditAvatar,
   profileFormAvatar,
   profileAvatar,
+  popupRemoveCard,
 } from '../utils/elements.js';
 import formValidationConfig from '../utils/formValidationConfig.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
 import Api from '../components/Api.js';
@@ -50,23 +52,28 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (formData) => {
+    openPopupEditHead.renderLoading(true);
+
     api
       .changeUserInfo(formData)
       .then(data => {
         userInfo.setUserInfo(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => openPopupEditHead.renderLoading(false))
   });
 openPopupEditHead.setEventListeners();
 
 const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
+    openPopupEditAvatar.renderLoading(true);
     api
-      .changeUserInfo(formData)
+      .changeUserAvatar(formData)
       .then(data => {
-        userInfo.setUserInfo(data);
+        userInfo.setUserAvatar(data._id);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => openPopupEditAvatar.renderLoading(false))
   });
 openPopupEditAvatar.setEventListeners();
 
@@ -97,6 +104,8 @@ popupOpenButtonAddCard.addEventListener('click', () => {
   openPopupAddCard.open();
 });
 
+const openPopupRemoveCard = new PopupWithConfirmation(popupRemoveCard);
+openPopupRemoveCard.setEventListeners();
 
 // создание карточек
 function generateCardToPage(data) {
@@ -111,23 +120,34 @@ function generateCardToPage(data) {
         api
           .addLike(cardId)
           .then((like) => {
+            console.log(cardId)
             card.updateLikesView(like);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+          }).catch(err => console.log(err));
       },
+
       deleteLike: (cardId) => {
         api
           .deleteLike(cardId)
           .then((like) => {
             card.updateLikesView(like);
           })
-          .catch((error) => {
-            console.log(error);
-          });
+          .catch(err => console.log(err));
       },
 
+      deleteCardForPage: () => {
+        openPopupRemoveCard.open();
+        openPopupRemoveCard.setSubmit(() => {
+          openPopupRemoveCard.renderLoading(true);
+          api
+            .deleteCard(data._id)
+            .then(() => {
+              card.removeElement();
+              openPopupRemoveCard.close();
+            })
+            .catch(err => console.log(err))
+            .finally(() => openPopupRemoveCard.renderLoading(false))
+        })
+      }
     })
 
   return card.generateCard();
@@ -137,11 +157,15 @@ const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
+    openPopupAddCard.renderLoading(true);
     api
       .addCard(data)
       .then(item => {
+        openPopupAddCard.renderLoading(true);
         cardsList.addItem(item);
       })
+      .catch(err => console.log(err))
+      .finally(() => openPopupAddCard.renderLoading(false))
   })
 openPopupAddCard.setEventListeners();
 

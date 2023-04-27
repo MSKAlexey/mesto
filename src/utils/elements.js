@@ -11,6 +11,7 @@ export const cardsContainerSelector = '.cards';
 export const popupEditHead = '.popup_edit';
 export const popupEditAvatar = '.popup_avatar';
 export const popupAddCard = '.popup_add';
+export const popupRemoveCard = '.popup_remove';
 export const popupImg = '.popup_img';
 
 // selector form
@@ -20,10 +21,9 @@ export const cardForm = document.forms.add;
 // inputs form editProfile
 export const popupName = document.querySelector('.popup__input_type_name');
 export const popupAbout = document.querySelector('.popup__input_type_about');
-// inputs form addCard
-// export const inputAddName = cardForm.querySelector('.popup__input_type_title');
-// export const inputAddLink = cardForm.querySelector('.popup__input_type_link');
 
 export const profileName = '.profile__title';
 export const profileAbout = '.profile__subtitle';
 export const profileAvatar = '.profile__image';
+
+export const confirmationButton = document.querySelector('.popup__button');

@@ -5,7 +5,7 @@ export default class Card {
     handleOpenPopup,
     api,
     userId,
-    handleLikeClick,
+    handleLikeAndDeleteClick,
   ) {
     this._name = data.name;
     this._link = data.link;
@@ -25,10 +25,12 @@ export default class Card {
     this._cardsTitle = this._element.querySelector('.cards__title');
     this._numberLikeClick = this._element.querySelector('.cards__count');
     this._likeItem = this._element.querySelector('.cards__icon');
-    this._TrashIcon = this._element.querySelector('.cards__trash');
+    this._trashIcon = this._element.querySelector('.cards__trash');
 
-    this._createLike = handleLikeClick.createLike;
-    this._deleteLike = handleLikeClick.deleteLike;
+    this._createLike = handleLikeAndDeleteClick.createLike;
+    this._deleteLike = handleLikeAndDeleteClick.deleteLike;
+
+    this._handleDeleteCard = handleLikeAndDeleteClick.deleteCardForPage;
   }
 
   _getTemplate() {
@@ -54,11 +56,11 @@ export default class Card {
   }
 
   removeElement() {
-    this._api.deleteCard(this._cardId)
-      .then(() => {
+    // this._api.deleteCard(this._cardId)
+    //   .then(() => {
         this._element.remove();
-      })
-      .catch(err => console.log(err));
+      // })
+      // .catch(err => console.log(err));
   }
 
   _handleLikeClick() {
@@ -71,7 +73,7 @@ export default class Card {
 
   _hideButtomTrash() {
     if (this._userId !== this._ownerId) {
-      this._element.querySelector('.cards__trash').style.visibility = 'hidden';
+      this._trashIcon.style.visibility = 'hidden';
     }
   }
 
@@ -79,7 +81,7 @@ export default class Card {
 
     this._cardsImage.addEventListener('click', () => this._handleOpenPopup(this._name, this._link));
 
-    this._element.querySelector('.cards__trash').addEventListener('click', () => this.removeElement());
+    this._trashIcon.addEventListener('click', () => this._handleDeleteCard());
 
     this._element.querySelector('.cards__icon').addEventListener('click', () => this._handleLikeClick());
 
