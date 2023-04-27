@@ -49,11 +49,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   })
   .catch(err => console.log(err))
 
-
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (formData) => {
     openPopupEditHead.renderLoading(true);
-
     api
       .changeUserInfo(formData)
       .then(data => {
