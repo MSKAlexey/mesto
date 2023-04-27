@@ -64,7 +64,7 @@ export default class Api {
   }
 
   changeUserAvatar({ avatar }) {
-    return fetch(`${this._url}users/me`,
+    return fetch(`${this._url}users/me/avatar`,
       {
         method: "PATCH",
         headers: this._headers,

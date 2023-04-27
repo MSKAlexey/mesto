@@ -81,8 +81,8 @@ function handleOpenPopupEditHead() {
   api
     .getUserInfo()
     .then(data => {
-      popupName.value = data.name;
-      popupAbout.value = data.about;
+      // popupName.value = data.name;
+      // popupAbout.value = data.about;
     })
     .catch(err => console.log(err))
   openPopupEditHead.open();
