@@ -16,9 +16,9 @@ export default class UserInfo {
     console.log(data.avatar)
     this._name.textContent = data.name;
     this._about.textContent = data.about;
-    this._avatar.src = data.link;
+    this._avatar.src = data;
   }
   setUserAvatar(data) {
-    this._avatar.src = data.link;
+    this._avatar.src = data.avatar;
   }
 }

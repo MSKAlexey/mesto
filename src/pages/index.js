@@ -64,12 +64,10 @@ const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
     openPopupEditAvatar.renderLoading(true);
     api
-
       .changeUserAvatar(formData)
       .then(data => {
-
-
-        userInfo.setUserAvatar(data._id)
+        // debugger
+        userInfo.setUserAvatar(data)
         openPopupEditAvatar.close()
       })
       .catch(err => console.log(err))
