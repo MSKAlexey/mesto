@@ -16,15 +16,15 @@ import {
   popupEditAvatar,
   profileFormAvatar,
   profileAvatar,
-} from "../utils/elements.js";
-import formValidationConfig from "../utils/formValidationConfig.js";
-import Card from "../components/Card.js";
-import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
-import FormValidator from "../components/FormValidator.js";
-import Api from "../components/Api.js";
+} from '../utils/elements.js';
+import formValidationConfig from '../utils/formValidationConfig.js';
+import Card from '../components/Card.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import FormValidator from '../components/FormValidator.js';
+import Api from '../components/Api.js';
 
 const api = new Api();
 
@@ -45,7 +45,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     // отображаем карточки полученные с сервера для профиля
     cardsList.addCards(card);
   })
-  .catch((err) => console.log(err))
+  .catch(err => console.log(err))
 
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
@@ -55,18 +55,18 @@ const openPopupEditHead = new PopupWithForm(popupEditHead,
       .then(data => {
         userInfo.setUserInfo(data);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   });
 openPopupEditHead.setEventListeners();
 
 const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
     api
-      .changeUserAvatar(formData)
+      .changeUserInfo(formData)
       .then(data => {
-        userInfo.setUserAvatar(data);
+        userInfo.setUserInfo(data);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   });
 openPopupEditAvatar.setEventListeners();
 
@@ -105,32 +105,30 @@ function generateCardToPage(data) {
     '.template',
     handleOpenPopup,
     api,
-    (data) => {
-      if (!card.isLiked()) {
-        api
-          .addLike(data._id)
-          .then((data) => {
-            card.updateData(data);
-            card.updateLikesView();
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      } else {
-        api
-          .deleteLike(data._id)
-          .then((data) => {
-            card.updateData(data);
-            card.updateLikesView();
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      }
-    },
     userId,
-  )
+    {
+      createLike: (cardId) => {
+        api
+          .addLike(cardId)
+          .then((like) => {
+            card.updateLikesView(like);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      deleteLike: (cardId) => {
+        api
+          .deleteLike(cardId)
+          .then((like) => {
+            card.updateLikesView(like);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
 
+    })
 
   return card.generateCard();
 };
