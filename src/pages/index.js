@@ -49,19 +49,18 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   })
   .catch(err => console.log(err))
 
-
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (formData) => {
     openPopupEditHead.renderLoading(true);
-
     api
       .changeUserInfo(formData)
       .then(data => {
-        userInfo.setUserInfo(data);
+        userInfo.setUserInfo(data)
+        openPopupEditHead.close()
       })
-      .catch((err) => console.log(err))
+      .catch(err => console.log(err))
       .finally(() => openPopupEditHead.renderLoading(false))
-  });
+  })
 openPopupEditHead.setEventListeners();
 
 const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
@@ -70,7 +69,8 @@ const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
     api
       .changeUserAvatar(formData)
       .then(data => {
-        userInfo.setUserAvatar(data._id);
+        userInfo.setUserAvatar(data._id)
+        openPopupEditAvatar.close()
       })
       .catch(err => console.log(err))
       .finally(() => openPopupEditAvatar.renderLoading(false))
@@ -84,6 +84,7 @@ function handleOpenPopupEditHead() {
       popupName.value = data.name;
       popupAbout.value = data.about;
     })
+    .catch(err => console.log(err))
   openPopupEditHead.open();
 }
 
@@ -122,7 +123,8 @@ function generateCardToPage(data) {
           .then((like) => {
             console.log(cardId)
             card.updateLikesView(like);
-          }).catch(err => console.log(err));
+          })
+          .catch(err => console.log(err));
       },
 
       deleteLike: (cardId) => {
@@ -161,8 +163,8 @@ const openPopupAddCard = new PopupWithForm(popupAddCard,
     api
       .addCard(data)
       .then(item => {
-        openPopupAddCard.renderLoading(true);
         cardsList.addItem(item);
+        openPopupAddCard.close()
       })
       .catch(err => console.log(err))
       .finally(() => openPopupAddCard.renderLoading(false))
