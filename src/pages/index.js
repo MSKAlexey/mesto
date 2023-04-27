@@ -40,11 +40,8 @@ const userInfo = new UserInfo({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, card]) => {
-    // получаем свой id
     userId = data._id;
-    // отображаем карточки полученные с сервера для профиля
     userInfo.setUserInfo(data);
-    // отображаем карточки полученные с сервера для профиля
     cardsList.addCards(card);
   })
   .catch(err => console.log(err))
@@ -67,8 +64,11 @@ const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
     openPopupEditAvatar.renderLoading(true);
     api
+
       .changeUserAvatar(formData)
       .then(data => {
+
+
         userInfo.setUserAvatar(data._id)
         openPopupEditAvatar.close()
       })
@@ -81,8 +81,8 @@ function handleOpenPopupEditHead() {
   api
     .getUserInfo()
     .then(data => {
-      // popupName.value = data.name;
-      // popupAbout.value = data.about;
+      popupName.value = data.name;
+      popupAbout.value = data.about;
     })
     .catch(err => console.log(err))
   openPopupEditHead.open();

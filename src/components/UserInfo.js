@@ -13,13 +13,12 @@ export default class UserInfo {
   // }
 
   setUserInfo(data) {
-    // console.log(data.avatar)
+    console.log(data.avatar)
     this._name.textContent = data.name;
     this._about.textContent = data.about;
-    this._avatar.src = data.avatar;
+    this._avatar.src = data.link;
   }
   setUserAvatar(data) {
-    console.log(data.link)
-    this._avatar.src = data.avatar;
+    this._avatar.src = data.link;
   }
 }

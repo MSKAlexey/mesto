@@ -63,13 +63,13 @@ export default class Api {
       }).then(this._checkStatusResponse);
   }
 
-  changeUserAvatar({ avatar }) {
+  changeUserAvatar({ link }) {
     return fetch(`${this._url}users/me/avatar`,
       {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-          avatar: avatar,
+          avatar: link,
         })
       }).then(this._checkStatusResponse);
   }
