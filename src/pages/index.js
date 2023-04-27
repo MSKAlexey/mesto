@@ -121,7 +121,6 @@ function generateCardToPage(data) {
         api
           .addLike(cardId)
           .then((like) => {
-            console.log(cardId)
             card.updateLikesView(like);
           })
           .catch(err => console.log(err));
