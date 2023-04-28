@@ -9,7 +9,7 @@ export default class PopupWithForm extends Popup {
     this._initialText = this._confirmationButton.textContent;
   }
 
-  setInputValues(data) {
+  setInputValues(data) { // не понимаю как использовать, видимо силы кончились ((((
     this._inputList.forEach((input) => {
       // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
       input.value = data[input.name];
