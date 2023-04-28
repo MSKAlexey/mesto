@@ -48,29 +48,23 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
 const openPopupEditHead = new PopupWithForm(popupEditHead,
   (formData) => {
-    openPopupEditHead.renderLoading(true);
-    api
+    return api
       .changeUserInfo(formData)
       .then(data => {
         userInfo.setUserInfo(data)
-        openPopupEditHead.close()
       })
       .catch(err => console.log(err))
-      .finally(() => openPopupEditHead.renderLoading(false))
   })
 openPopupEditHead.setEventListeners();
 
 const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   (formData) => {
-    openPopupEditAvatar.renderLoading(true);
-    api
+    return api
       .changeUserAvatar(formData)
       .then(data => {
         userInfo.setUserAvatar(data)
-        openPopupEditAvatar.close()
       })
       .catch(err => console.log(err))
-      .finally(() => openPopupEditAvatar.renderLoading(false))
   });
 openPopupEditAvatar.setEventListeners();
 
@@ -153,15 +147,12 @@ const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 
 const openPopupAddCard = new PopupWithForm(popupAddCard,
   (data) => {
-    openPopupAddCard.renderLoading(true);
-    api
+    return api
       .addCard(data)
       .then(item => {
         cardsList.addItem(item);
-        openPopupAddCard.close()
       })
       .catch(err => console.log(err))
-      .finally(() => openPopupAddCard.renderLoading(false))
   })
 openPopupAddCard.setEventListeners();
 

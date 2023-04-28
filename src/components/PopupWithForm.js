@@ -26,9 +26,18 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
+
     this._form.addEventListener('submit', (event) => {
       event.preventDefault();
-      this._submit(this._getInputValues());
+      // перед запросом сохраняем изначальный текст кнопки
+      const initialText = this._confirmationButton.textContent;
+      // меняем его, чтобы показать пользователю ожидание
+      this._confirmationButton.textContent = 'Сохранение...';
+      this._submit(this._getInputValues())
+        .then(() => this.close()) // закрывается попап в `then`
+        .finally(() => {
+          this._confirmationButton.textContent = initialText;
+        }) // в любом случае меняется текст кнопки обратно на начальный в `finally`
     });
   }
 
@@ -36,15 +45,5 @@ export default class PopupWithForm extends Popup {
     this._form.reset();
     super.close();
   }
-
-  renderLoading(isLoading) {
-    if (isLoading) {
-      this._confirmationButton.textContent = 'Сохранение...'; // обязательно поправлю на выходных, хочу уже сдать эту работу! очень тяжело далась она мне...
-    } else {
-      this._confirmationButton.textContent = 'Сохранить';
-    }
-  }
-
-
 
 }
