@@ -66,7 +66,6 @@ const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
     api
       .changeUserAvatar(formData)
       .then(data => {
-        // debugger
         userInfo.setUserAvatar(data)
         openPopupEditAvatar.close()
       })
@@ -149,8 +148,9 @@ function generateCardToPage(data) {
       }
     })
 
-  return card.generateCard();
-};
+  return card.generateCard()
+
+}
 // создаем новые карточки
 const cardsList = new Section(generateCardToPage, cardsContainerSelector);
 

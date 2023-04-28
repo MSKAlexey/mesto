@@ -6,7 +6,7 @@ export default class UserInfo {
   }
 
   getUserInfo(data) {
-      debugger
+      // debugger
       return {
       title: data.name,
       about: data.about,
