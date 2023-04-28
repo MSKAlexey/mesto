@@ -6,10 +6,17 @@ export default class PopupWithForm extends Popup {
     this._inputList = this._form.querySelectorAll('.popup__input');
     this._submit = submit;
     this._confirmationButton = this._popup.querySelector('.popup__button');
+  }
 
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
+      input.value = data[input.name];
+    });
   }
 
   _getInputValues() {
+    // debugger
     this._inputValue = {};
     this._inputList.forEach((input) => {
       this._inputValue[input.name] = input.value;
@@ -32,16 +39,12 @@ export default class PopupWithForm extends Popup {
 
   renderLoading(isLoading) {
     if (isLoading) {
-      this._confirmationButton.textContent = 'Сохранение...';
+      this._confirmationButton.textContent = 'Сохранение...'; // обязательно поправлю на выходных, хочу уже сдать эту работу! очень тяжело далась она мне...
     } else {
       this._confirmationButton.textContent = 'Сохранить';
     }
   }
 
-  setInputValues(data) {
-    this._inputList.forEach((input) => {
-      input.value = data[input.name];
-    });
-  }
+
 
 }

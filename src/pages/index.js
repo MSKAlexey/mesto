@@ -10,8 +10,8 @@ import {
   cardForm,
   popupImg,
   cardsContainerSelector,
-  popupName,
-  popupAbout,
+  inputName,
+  inputAbout,
   popupOpenButtonEditAvatar,
   popupEditAvatar,
   profileFormAvatar,
@@ -75,13 +75,10 @@ const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
 openPopupEditAvatar.setEventListeners();
 
 function handleOpenPopupEditHead() {
-  api
-    .getUserInfo()
-    .then(data => {
-      popupName.value = data.name;
-      popupAbout.value = data.about;
-    })
-    .catch(err => console.log(err))
+  // debugger
+  const user = userInfo.getUserInfo();
+  inputName.value = user.name;
+  inputAbout.value = user.about;
   openPopupEditHead.open();
 }
 

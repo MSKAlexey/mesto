@@ -19,8 +19,8 @@ export const profileForm = document.forms.edit;
 export const profileFormAvatar = document.forms.avatar;
 export const cardForm = document.forms.add;
 // inputs form editProfile
-export const popupName = document.querySelector('.popup__input_type_name');
-export const popupAbout = document.querySelector('.popup__input_type_about');
+export const inputName = document.querySelector('.popup__input_type_name');
+export const inputAbout = document.querySelector('.popup__input_type_about');
 
 export const profileName = '.profile__title';
 export const profileAbout = '.profile__subtitle';
