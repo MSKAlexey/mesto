@@ -35,7 +35,6 @@ export default class PopupWithForm extends Popup {
       this._submit(this._getInputValues())
         .then(() => this.close()) // закрывается попап в `then`
         .finally(() => {
-          debugger
           this._confirmationButton.textContent = this._initialText;
         }) // в любом случае меняется текст кнопки обратно на начальный в `finally`
     });
