@@ -5,18 +5,19 @@ export default class UserInfo {
     this._avatar = document.querySelector(avatar);
   }
 
-  // getUserInfo(/* data */) {
-  //   return {
-  //     // title: data.name,
-  //     // about: data.about,
-  //   }
-  // }
+  getUserInfo(data) {
+      debugger
+      return {
+      title: data.name,
+      about: data.about,
+      avatar: data.avatar,
+    }
+  }
 
   setUserInfo(data) {
-    console.log(data.avatar)
     this._name.textContent = data.name;
     this._about.textContent = data.about;
-    this._avatar.src = data;
+    this._avatar.src = data.avatar;
   }
   setUserAvatar(data) {
     this._avatar.src = data.avatar;
