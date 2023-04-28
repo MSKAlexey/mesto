@@ -69,7 +69,6 @@ const openPopupEditAvatar = new PopupWithForm(popupEditAvatar,
 openPopupEditAvatar.setEventListeners();
 
 function handleOpenPopupEditHead() {
-  // debugger
   const user = userInfo.getUserInfo();
   inputName.value = user.name;
   inputAbout.value = user.about;
